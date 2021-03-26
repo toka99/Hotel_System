@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/rooms',function(){
+return view ("clients.rooms");
+});
+
+Route::get('/myreservation',function(){
+    return view ("clients.myReservation");
+    });
+    
