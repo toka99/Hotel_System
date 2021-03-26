@@ -23,4 +23,10 @@ return view ("clients.rooms");
 Route::get('/myreservation',function(){
     return view ("clients.myReservation");
     });
+    Route::get('/register',function(){
+        return view ("clients.auth.register");
+        });
+        Route::get('/login',function(){
+            return view ("clients.auth.login");
+            });
     
