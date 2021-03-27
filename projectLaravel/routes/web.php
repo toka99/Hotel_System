@@ -20,13 +20,19 @@ Route::get('/rooms',function(){
 return view ("clients.rooms");
 });
 
-Route::get('/myreservation',function(){
-    return view ("clients.myReservation");
+Route::get('/reservation',function(){
+    return view ("clients.Reservation");
     });
-    Route::get('/register',function(){
-        return view ("clients.auth.register");
+Route::get('/register',function(){
+        return view ("auth.register");
         });
-        Route::get('/login',function(){
-            return view ("clients.auth.login");
+
+Route::get('/login',function(){
+            return view ("/rooms" 
+        );
             });
+   
     
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
