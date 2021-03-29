@@ -23,16 +23,13 @@ return view ("clients.rooms");
 Route::get('/reservation',function(){
     return view ("clients.Reservation");
     });
-Route::get('/register',function(){
-        return view ("auth.register");
-        });
 
-Route::get('/login',function(){
-            return view ("/rooms" 
-        );
-            });
-   
     
 Auth::routes();
+
+// Route::get('/register',function(){
+//     return view('auth.register');
+// });
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
