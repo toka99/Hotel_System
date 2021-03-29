@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin| Receptionist index</title>
+  <title>Admin|Edit  Receptionist</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -272,7 +272,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Welcome Admin </h1>
+            <h1 class="m-0">Edit Receptionist</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -292,7 +292,65 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
   </aside>
  
+  <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Create Receptionist Form</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <div class="container">
+              <form method="POST" action="{{route('receptionists.store')}}">
+                <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="nationalid">National_id</label>
+                    <input type="text" class="form-control" id="nationalid" placeholder="enter national_id">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Choose an image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                    <div class="form-group">
+                    <label for="nationalid">Created_at</label>
+                    <input type="date" class="form-control" id="date" placeholder="enter the date">
+                  </div> 
+                  
+                  <div class="form-group">
+                    <label for="manager name">Manager Name</label>
+                    <input type="text" class="form-control" id="manager name" placeholder="enter manager name">
+                  </div>
 
+
+                  <div class="form-group text-center">
+                  <a href="/receptionists/create"  type="button" class="btn btn-primary btn-sm " >
+                    Update Receptionist
+                  </a>
+                  </div>
+
+                  
+                 
+</form>
+</div>
 <!-- jQuery -->
 <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
 

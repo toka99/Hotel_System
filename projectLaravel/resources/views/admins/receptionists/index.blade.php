@@ -277,6 +277,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0">Manage Receptionists </h1>
+            <br>
+            <a href="/receptionists/create"  type="button" class="btn btn-primary btn-sm">
+              
+                Create Receptionist
+            </a>
+              
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -298,12 +304,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
+
   <!-- from hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee -->
 
 
 
 <div class="box">
-
     
     <!-- /.box-header -->
     <div class="box-body">
@@ -340,6 +346,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 
 
+
 <script type="text/javascript">
   $(function () {
     $.noConflict();
@@ -368,7 +375,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   });
 
 
-
     $('#datatable-receptionist').on('click', '.btn-delete[data-remote]', function (e) { 
     e.preventDefault();
     $.ajaxSetup({
@@ -392,7 +398,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-  <!-- to hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeee eeeeeeeeee-->
+  <!-- to hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-->
  
 
 <!-- jQuery -->

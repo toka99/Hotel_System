@@ -35,7 +35,7 @@ class ReceptionistController extends Controller
                 {
 
                     $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> 
-                                <button class="btn-delete" data-remote="/receptionists' . $id->id . '">Delete</button>';
+                                  <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a> ';
                               
                
 
@@ -53,10 +53,8 @@ class ReceptionistController extends Controller
 
     }
 
- 
 
-
-
+    
 
     public function index() {
     
@@ -121,6 +119,7 @@ class ReceptionistController extends Controller
      return redirect()->route('admins.receptionists.index')->with('success','Receptionist deleted successfully');
                                               
  }
+ 
 // public function destroy($id)
 // {
 // // delete task

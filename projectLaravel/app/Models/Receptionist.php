@@ -9,6 +9,7 @@ class Receptionist extends Model
 {
     use HasFactory;
     protected $table = "receptionists";
+
  
     protected $fillable = [
         'name',
