@@ -85,13 +85,18 @@ class ReceptionistController extends Controller
  }
 
 
+
+
  
  public function store(StoreReceptionistRequest $request){
 
     $requestData = $request->all();
     receptionist::create($requestData);
-    return redirect()->route('admins.receptionists.index');
+    //return redirect()->route('admins.receptionists.index');
+    return response()->json(['success' => 'Data Added successfully.']);
  }
+
+ 
 
 
  //'users'=>User::all()  related to edit fun. d bta3t l drop down list bta3t l post creator mmkn n3mlha ll mangers w gwa l []
@@ -119,7 +124,7 @@ class ReceptionistController extends Controller
      return redirect()->route('admins.receptionists.index')->with('success','Receptionist deleted successfully');
                                               
  }
- 
+
 // public function destroy($id)
 // {
 // // delete task

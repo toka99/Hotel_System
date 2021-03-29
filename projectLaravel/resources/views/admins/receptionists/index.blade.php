@@ -278,10 +278,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="col-sm-6">
             <h1 class="m-0">Manage Receptionists </h1>
             <br>
-            <a href="/receptionists/create"  type="button" class="btn btn-primary btn-sm">
+
+            
+            <a href="{{route('receptionists.create')}}"  type="button" class="btn btn-primary btn-sm">
               
                 Create Receptionist
             </a>
+           </form>
               
           </div><!-- /.col -->
           <div class="col-sm-6">

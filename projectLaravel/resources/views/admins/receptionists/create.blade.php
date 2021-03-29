@@ -291,6 +291,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <p>Sidebar content</p>
     </div>
   </aside>
+
+
   <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">Create Receptionist Form</h3>
@@ -298,6 +300,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <!-- /.card-header -->
               <!-- form start -->
               <div class="container">
+
+              @if ($errors->any())
+<div class="alert alert-danger">
+<ul>
+ @foreach($errors->all() as $error)
+ <li>{{$error}}</li>
+ @endforeach
+ </ul>
+ </div>
+ @endif
               <form method="POST" action="{{route('receptionists.store')}}">
                 <div class="card-body">
                 <div class="form-group">

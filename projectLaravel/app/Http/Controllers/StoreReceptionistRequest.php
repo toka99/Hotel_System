@@ -34,5 +34,38 @@ class StorePostRequest extends FormRequest
                 'confirm_password'  => 'required|same:password'
             
         ];
+
+      
+    }
+
+
+    public function messages()
+    {
+        return [
+
+            'name.required' =>'Name must be filled!!' ,
+
+            'phone.required' =>'Phone must be filed!!' ,
+
+            'phone.numeric' =>'Phone must be numbers only!!' ,
+
+            'phone.regex' =>'Phone is not valid!!' ,
+
+            'email.required' =>'Email must be filled!!' ,
+
+            'email.unique' =>'This Email has already taken!!' ,
+
+            'password.requires' =>'Password must be filed!!' ,
+
+            'password.min' =>'Password must be at least 8 characters!!' ,
+
+            'national_id.required' =>'National_is must be filled!!' ,
+
+            'national_id.min' =>'National_is must be 14 characters only!!' ,
+
+            'national_id.unique' =>'National_is must be unique!!' ,
+
+        ];
+
     }
 }
