@@ -82,7 +82,6 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
 
                             <div class="col-md-6">
-                                <!-- <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" required > -->
 
                                 <select name="gender" class="form-control @error('image') is-invalid @enderror" name="gender" required >
 
@@ -102,14 +101,12 @@
                             <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
 
                             <div class="col-md-6">
-                                <!-- <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" required > -->
                                 
                                 <select name="country" class="form-control @error('image') is-invalid @enderror" name="country" required >
 
-                          <option value="op1">op1</option>
-                          <option value="op2">op2</option>
-                          <option value="op3"> op3</option>
-                          <option value="op4">op4</option>
+                                <option value="op1">op1</option>
+
+
                           
                           </select>
                                 @error('gender')
@@ -124,7 +121,6 @@
                     
                  
                      
-                <!-- /.card-body -->
 
 
                         <div class="form-group row mb-0">
