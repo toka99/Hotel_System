@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Receptionist;
+use App\Models\User;
 
 use App\Http\Controllers\StoreReceptionistRequest;
 
@@ -88,10 +89,16 @@ class ReceptionistController extends Controller
 
 
  
- public function store(StoreReceptionistRequest $request){
+ public function store(Request $request){
 
     $requestData = $request->all();
-    receptionist::create($requestData);
+    Receptionist::create($requestData);
+    User::create([
+        'email' => $request['email'],
+        'password' => $request['password'],
+        'role' => $request['reseptionist'],
+
+    ]);
     //return redirect()->route('admins.receptionists.index');
     return response()->json(['success' => 'Data Added successfully.']);
  }

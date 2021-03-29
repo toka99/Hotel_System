@@ -29,6 +29,7 @@ class CreateReceptionistsTable extends Migration
             $table->string('national_id')->unique();
             $table->string('email')->unique();
             $table->string('manager_name');
+            $table->string('image');
             $table->string('password');
             //$table->BLOOM('image');    ****** IMAGE???????????????????
             $table->rememberToken();

@@ -311,28 +311,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
  </div>
  @endif
               <form method="POST" action="{{route('receptionists.store')}}">
+              @csrf
                 <div class="card-body">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    <input name="name" type="text" class="form-control" id="name" placeholder="Enter name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                   </div>
                   <div class="form-group">
                     <label for="nationalid">National_id</label>
-                    <input type="text" class="form-control" id="nationalid" placeholder="enter national_id">
+                    <input name="national_id" type="text" class="form-control" id="nationalid" placeholder="enter national_id">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Choose an image</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <input  name="image" type="file" class="custom-file-input" id="exampleInputFile">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -348,14 +349,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   
                   <div class="form-group">
                     <label for="manager name">Manager Name</label>
-                    <input type="text" class="form-control" id="manager name" placeholder="enter manager name">
+                    <input name="manager_name" type="text" class="form-control" id="manager_name" placeholder="enter manager name">
                   </div>
 
 
                   <div class="form-group text-center">
-                  <a href="/receptionists/create"  type="button" class="btn btn-primary btn-sm " >
+                  <button  type="submit" class="btn btn-primary btn-sm " >
                     Create Receptionist
-                  </a>
+                  </button>
                   </div>
 
                   
