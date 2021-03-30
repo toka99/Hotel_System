@@ -8,6 +8,8 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Client;
 use App\Models\Receptionist;
+use App\Models\Manager;
+
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;

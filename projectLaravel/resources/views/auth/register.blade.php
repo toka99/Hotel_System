@@ -104,59 +104,97 @@
 
 
                                 </div>
-
-
                                 @elseif($url=='manager')
                                 @csrf
-    <div id="mnager">
+                                <div id="receptionist">
+                                                            <div class="form-group row">
+                                                        <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-       <div class="card-body">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email">
-                  </div>
-                  <div class="form-group">
-                    <label for="nationalid">National_id</label>
-                    <input type="text" class="form-control" id="nationalid" placeholder="enter national_id" name="national_id">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">Choose an image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                    <div class="form-group">
-                    <label for="nationalid">Created_at</label>
-                    <input type="date" class="form-control" id="date" placeholder="enter the date" name="created_at">
-                  </div> 
-                  
-                  
+                                                        <div class="col-md-6">
+                                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                  <div class="form-group text-center">
+                                                            @error('name')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
 
-                  <button type="submit" class="btn btn-success">create</button>
+                                                    <div class="form-group row">
+                                                        <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
-                  </div>
+                                                        <div class="col-md-6">
+                                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+
+                                                            @error('email')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                                                        <div class="col-md-6">
+                                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+                                                            @error('password')
+                                                                <span class="invalid-feedback" role="alert">
+                                                                    <strong>{{ $message }}</strong>
+                                                                </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row">
+                                                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                                                        <div class="col-md-6">
+                                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                <label for="nationalid">National_id</label>
+                                                <input type="text" class="form-control" id="nationalid" placeholder="enter national_id" name="national_id">
+
+                                            
+                                            </div>
+                                                    <div class="form-group">
+                                            <label for="exampleInputFile">Choose an image</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+
+                                                    <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
+
+                                                    
+
+                                                    <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                                                </div>
+                                                
+                                            </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nationalid">Created_at</label>
+                                                <input type="date" class="form-control" id="date" placeholder="enter the date" name="created_at">
+                                            </div> 
+                                            
+                                            
+                                                    <div class="form-group row mb-0">
+                                                        <div class="col-md-6 offset-md-4">
+                                                            <button type="submit" class="btn btn-primary">
+                                                                {{ __('Register') }}
+                                                            </button>
+                                                        </div>
+                                                    </div>
 
 
+                                </div>
 
-
-    </div>               
+                               
+                   
                                 
                                 <!-- @else
                                 <input type=text placeholder="manger"> -->
