@@ -30,7 +30,6 @@ class CreateReceptionistsTable extends Migration
             $table->string('email')->unique();
             $table->string('manager_name');
             $table->string('password');
-            //$table->BLOOM('image');    ****** IMAGE???????????????????
             $table->rememberToken();
             $table->timestamps();
         });

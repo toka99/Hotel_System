@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin| Create receptionist</title>
+  <title>Admin|Edit  Managers</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -272,7 +272,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Receptionist</h1>
+            <h1 class="m-0">Edit Mangers</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -291,16 +291,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <p>Sidebar content</p>
     </div>
   </aside>
-
-
+ 
   <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Create Receptionist Form</h3>
+                <h3 class="card-title">Edit Managers Form</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <div class="container">
-
+              
               @if ($errors->any())
 <div class="alert alert-danger">
 <ul>
@@ -310,30 +309,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
  </ul>
  </div>
  @endif
-              <form method="POST" action="{{route('receptionists.store')}}">
+              <form method="POST" action="{{route('managers.update', ['manager' => $manager['id']])}}">
               @csrf
+              @method('PUT')
                 <div class="card-body">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" value="{{$manager['name']}}" name="name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{$manager['password']}}" name="password">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{$manager['email']}}" name="email">
                   </div>
                   <div class="form-group">
                     <label for="nationalid">National_id</label>
-                    <input type="text" class="form-control" id="nationalid" placeholder="enter national_id" name="national_id">
+                    <input type="text" class="form-control" id="nationalid" placeholder="enter national_id" value="{{$manager['national_id']}}" name="national_id">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Choose an image</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
+                        <input type="file" class="custom-file-input" id="exampleInputFile" value="{{$manager['image']}}" name="image">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -344,24 +344,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   
                     <div class="form-group">
                     <label for="nationalid">Created_at</label>
-                    <input type="date" class="form-control" id="date" placeholder="enter the date" name="created_at">
+                    <input type="date" class="form-control" id="date" placeholder="enter the date" value="{{$manager['created_at']}}" name="created_at">
                   </div> 
                   
                   <div class="form-group">
                     <label for="manager name">Manager Name</label>
-                    <input type="text" class="form-control" id="manager name" placeholder="enter manager name" name="manager_name">
+                    <input type="text" class="form-control" id="manager name" placeholder="enter manager name" value="{{$manager['manager_name']}}" name="manager_name">
                   </div>
 
 
+                  
                   <div class="form-group text-center">
 
-                  <button type="submit" class="btn btn-success">create</button>
+                  <button type="submit" class="btn btn-success">Update Manager</button>
 
                   </div>
- 
-              </form>
-              </div>
-  
+
+                  
+                 
+</form>
+</div>
 <!-- jQuery -->
 <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
 

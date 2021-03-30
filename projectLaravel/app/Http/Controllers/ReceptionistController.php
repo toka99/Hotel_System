@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Models\Receptionist;
 
-use App\Http\Controllers\StoreReceptionistRequest;
+//use App\Http\Controllers\Requests\StoreReceptionistRequest; 
+
+
+ 
+
 
 use DataTables;
 
@@ -28,22 +32,8 @@ class ReceptionistController extends Controller
 
             return Datatables::of($data)
 
-                // ->addIndexColumn()
+                ->addColumn('action', 'helper.actionButtons')
 
-                ->addColumn('action',  function($row) 
-
-                {
-
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> 
-                                  <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a> ';
-                              
-               
-
-                   return $actionBtn;
-
-                 })
-   
-                //->addColumn('action', 'helper.actionButtons')
                 
                 ->rawColumns(['action'])
 
@@ -52,6 +42,8 @@ class ReceptionistController extends Controller
         }
 
     }
+
+
 
 
     
@@ -79,7 +71,7 @@ class ReceptionistController extends Controller
 
 
       // 'users' => User::all()     this related to the create el part bta3 el loop of el drop down list mmkn ybwa managers hna
- public function create() {
+public function create() {
     return view('admins.receptionists.create');
 
  }
@@ -88,12 +80,24 @@ class ReceptionistController extends Controller
 
 
  
- public function store(StoreReceptionistRequest $request){
+ public function store(Request $request){
+    $request->validate([
 
+        
+            'name'              => 'required',
+            'email'             => 'required|email|unique:receptionists,email',
+            'password'          => 'required|min:8',
+            'national_id'       => 'required|min:14|unique:receptionists,national_id',
+            'manager_name'      => 'required',
+            'created_at'        => 'required',
+            'image'             => 'required',   
+
+    ]);
     $requestData = $request->all();
-    receptionist::create($requestData);
-    //return redirect()->route('admins.receptionists.index');
-    return response()->json(['success' => 'Data Added successfully.']);
+    Receptionist::create($requestData);
+    return redirect()->route('receptionists.index');
+   
+    //return response()->json()->redirectToRoute('admins.receptionists.index');
  }
 
  
@@ -108,30 +112,44 @@ class ReceptionistController extends Controller
     }
 
 
- public function update(UpdateReceptionistRequest $request, Receptionist $receptionist){
+   
+
+
+ public function update(Request $request, Receptionist $receptionist){
+
+    $request->validate([
+
+    
+        'name'              => 'required',
+        'email'             => 'required|email|unique:receptionists,email,'.$receptionist->id,
+        'password'          => 'required|min:8',
+        'national_id'       => 'required|min:14|unique:receptionists,national_id'.$receptionist->id,
+        'manager_name'      => 'required',
+        'created_at'        => 'required',
+        'image'             => 'required',   
+
+    ]);
 
 
     $receptionist->update($request->all());
 
-    return redirect()->route('admins.receptionists.index') ->with('success','Receptionist updated successfully');
+    return redirect()->route('receptionists.index') ->with('success','Receptionist updated successfully');
     
  }
 
+
+
+
+
+
   //remove post
  public function destroy(Receptionist $receptionist){
-
+    
      $receptionist->delete();
-     return redirect()->route('admins.receptionists.index')->with('success','Receptionist deleted successfully');
+     return redirect()->route('receptionists.index')->with('success','Receptionist deleted successfully');
                                               
- }
+ }                          
 
-// public function destroy($id)
-// {
-// // delete task
-// $receptionist=Receptionist::find($id);
-// $receptionist->delete();
-// return redirect('/receptionists')->with('success','Task deleted successfully');
-// }
 
  
 }

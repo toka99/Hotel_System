@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin| Create receptionist</title>
+  <title>Admin| Create Manager</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -272,7 +272,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Receptionist</h1>
+            <h1 class="m-0">Create Manager</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -295,7 +295,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Create Receptionist Form</h3>
+                <h3 class="card-title">Create Manager Form</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -310,7 +310,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
  </ul>
  </div>
  @endif
-              <form method="POST" action="{{route('receptionists.store')}}">
+              <form method="POST" action="{{route('managers.store')}}">
               @csrf
                 <div class="card-body">
                 <div class="form-group">
