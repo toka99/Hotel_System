@@ -156,10 +156,10 @@
 
 
 
-    </div>               
+     </div>               
                                 
-                                <!-- @else
-                                <input type=text placeholder="manger"> -->
+                                @else
+                                <input type=text placeholder="manger">
                                 @endif
                         @else
                         <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
