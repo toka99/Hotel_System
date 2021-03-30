@@ -5,11 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Receptionist extends Model
+
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Receptionist extends Authenticatable
 {
     use HasFactory;
-    protected $table = "receptionists";
 
+    use Notifiable;
+
+    
+
+    protected $table = "receptionists";
+    protected $guard = 'receptionist';
  
     protected $fillable = [
         'name',
