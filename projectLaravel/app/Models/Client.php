@@ -4,12 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-class Client extends Model
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class Client extends Authenticatable
 {
     use HasFactory;
   
-    
+    use Notifiable;
+
+    protected $table = "clients";
+    protected $guard = 'client';
+ 
+
 
 
     protected $fillable=[
@@ -19,6 +25,10 @@ class Client extends Model
         'gender',
         'country',
         'image',
+    ];
+
+    protected $hidden = [
+        'remember_token'
     ];
     
 }

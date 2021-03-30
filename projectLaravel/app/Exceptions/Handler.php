@@ -44,8 +44,17 @@ class Handler extends ExceptionHandler
         }
         
       
+        if ($request->is('admin') || $request->is('admin/*')) {
+            return redirect()->guest('/login/admin');
+        }
+        if ($request->is('manager') || $request->is('manager/*')) {
+            return redirect()->guest('/login/manager');
+        }
         if ($request->is('receptionist') || $request->is('receptionist/*')) {
             return redirect()->guest('/login/receptionist');
+        }
+        if ($request->is('client') || $request->is('client/*')) {
+            return redirect()->guest('/login/client');
         }
         return redirect()->guest(route('login'));
     }

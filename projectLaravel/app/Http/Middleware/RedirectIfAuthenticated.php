@@ -9,8 +9,17 @@ namespace App\Http\Middleware;
     {
         public function handle($request, Closure $next, $guard = null)
         {
+            if ($guard == "admin" && Auth::guard($guard)->check()) {
+                return redirect('/admin');
+            }
+            if ($guard == "manager" && Auth::guard($guard)->check()) {
+                return redirect('/manager');
+            }
             if ($guard == "receptionist" && Auth::guard($guard)->check()) {
                 return redirect('/receptionist');
+            }
+            if ($guard == "client" && Auth::guard($guard)->check()) {
+                return redirect('/client');
             }
             
             if (Auth::guard($guard)->check()) {

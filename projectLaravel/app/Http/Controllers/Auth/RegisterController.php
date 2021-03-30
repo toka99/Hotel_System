@@ -45,9 +45,46 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:admin');
+        $this->middleware('guest:manager');
         $this->middleware('guest:receptionist');
+        $this->middleware('guest:client');
 
     }
+    //admin
+    public function showAdminRegisterForm()
+    {
+        return view('auth.register', ['url' => 'admin']);
+    }
+    protected function createAdmin(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $admin = Admin::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/admin');
+    }
+    //manager
+    public function showManagerRegisterForm()
+    {
+        return view('auth.register', ['url' => 'manager']);
+    }
+    protected function createManager(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $manager = Manager::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'image' => $request['image'],
+            'national_id' => $request['national_id'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/manager');
+    }
+
+    //receptionist
     public function showReceptionistRegisterForm()
     {
         return view('auth.register', ['url' => 'receptionist']);
@@ -64,6 +101,25 @@ class RegisterController extends Controller
             'password' => Hash::make($request['password']),
         ]);
         return redirect()->intended('login/receptionist');
+    }
+    //client
+    public function showClientRegisterForm()
+    {
+        return view('auth.register', ['url' => 'client']);
+    }
+    protected function createClient(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $client = Client::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'image' => $request['image'],
+            'gender' => $request['gender'],
+            'country' => $request['country'],
+            
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/client');
     }
 
     /**

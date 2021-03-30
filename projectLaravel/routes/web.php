@@ -45,17 +45,41 @@ Auth::routes();
 //     return view ("/admins/index" 
 // );
 //     });
+//admin
+Route::get('/login/admin', [App\Http\Controllers\Auth\LoginController::class,'showAdminLoginForm']);
+Route::get('/register/admin', [App\Http\Controllers\Auth\RegisterController::class,'showAdminRegisterForm']);
 
+Route::post('/login/admin',[App\Http\Controllers\Auth\LoginController::class,'adminLogin']);
+Route::post('/register/admin', [App\Http\Controllers\Auth\RegisterController::class,'createAdmin']);
+
+//manager Manager
+    Route::get('/login/manager', [App\Http\Controllers\Auth\LoginController::class,'showManagerLoginForm']);
+    Route::get('/register/manager', [App\Http\Controllers\Auth\RegisterController::class,'showManagerRegisterForm']);
     
+    Route::post('/login/manager',[App\Http\Controllers\Auth\LoginController::class,'managerLogin']);
+    Route::post('/register/manager', [App\Http\Controllers\Auth\RegisterController::class,'createManager']);
+
+
+    //receptionist
     Route::get('/login/receptionist', [App\Http\Controllers\Auth\LoginController::class,'showReceptionistLoginForm']);
     Route::get('/register/receptionist', [App\Http\Controllers\Auth\RegisterController::class,'showReceptionistRegisterForm']);
     
-
     Route::post('/login/receptionist',[App\Http\Controllers\Auth\LoginController::class,'receptionistLogin']);
     Route::post('/register/receptionist', [App\Http\Controllers\Auth\RegisterController::class,'createReceptionist']);
+//client  Client
+
+    Route::get('/login/client', [App\Http\Controllers\Auth\LoginController::class,'showClientLoginForm']);
+    Route::get('/register/client', [App\Http\Controllers\Auth\RegisterController::class,'showClientRegisterForm']);
+    
+    Route::post('/login/client',[App\Http\Controllers\Auth\LoginController::class,'clientLogin']);
+    Route::post('/register/client', [App\Http\Controllers\Auth\RegisterController::class,'createClient']);
+
 
     Route::view('/home', 'home')->middleware('auth');
+    Route::view('/admin', 'admin');
+    Route::view('/manager', 'manager');
     Route::view('/receptionist', 'receptionist');
+    Route::view('/client', 'client');
     
 // Route::get('/admins', [AdminController::class, 'index'])->name('admins.index');
 // Route::get('/receptionists', [ReceptionistController::class, 'index'])->name('receptionists.index');//->middleware('auth');        
