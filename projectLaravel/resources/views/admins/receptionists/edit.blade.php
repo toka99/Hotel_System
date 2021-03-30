@@ -220,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/receptionists" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Receptionists
@@ -230,7 +230,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/managers" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Managers
@@ -294,34 +294,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
  
   <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Create Receptionist Form</h3>
+                <h3 class="card-title">Edit Receptionist Form</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
               <div class="container">
-              <form method="POST" action="{{route('receptionists.store')}}">
+              
+              @if ($errors->any())
+<div class="alert alert-danger">
+<ul>
+ @foreach($errors->all() as $error)
+ <li>{{$error}}</li>
+ @endforeach
+ </ul>
+ </div>
+ @endif
+              <form method="POST" action="{{route('receptionists.update', ['receptionist' => $receptionist['id']])}}">
+              @csrf
+              @method('PUT')
                 <div class="card-body">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" value="{{$receptionist['name']}}" name="name">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{$receptionist['password']}}" name="password">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{$receptionist['email']}}" name="email">
                   </div>
                   <div class="form-group">
                     <label for="nationalid">National_id</label>
-                    <input type="text" class="form-control" id="nationalid" placeholder="enter national_id">
+                    <input type="text" class="form-control" id="nationalid" placeholder="enter national_id" value="{{$receptionist['national_id']}}" name="national_id">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Choose an image</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <input type="file" class="custom-file-input" id="exampleInputFile" value="{{$receptionist['image']}}" name="image">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -332,19 +344,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   
                     <div class="form-group">
                     <label for="nationalid">Created_at</label>
-                    <input type="date" class="form-control" id="date" placeholder="enter the date">
+                    <input type="date" class="form-control" id="date" placeholder="enter the date" value="{{$receptionist['created_at']}}" name="created_at">
                   </div> 
                   
                   <div class="form-group">
                     <label for="manager name">Manager Name</label>
-                    <input type="text" class="form-control" id="manager name" placeholder="enter manager name">
+                    <input type="text" class="form-control" id="manager name" placeholder="enter manager name" value="{{$receptionist['manager_name']}}" name="manager_name">
                   </div>
 
 
+                  
                   <div class="form-group text-center">
-                  <a href="/receptionists/create"  type="button" class="btn btn-primary btn-sm " >
-                    Update Receptionist
-                  </a>
+
+                  <button type="submit" class="btn btn-success">Update Receptionist</button>
+
                   </div>
 
                   

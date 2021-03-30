@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | Starter</title>
+  <title>Admin| Create Manager</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -220,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="/receptionists" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Receptionists
@@ -230,7 +230,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
           <li class="nav-item">
-            <a href="/managers" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Managers
@@ -272,7 +272,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Welcome Admin </h1>
+            <h1 class="m-0">Create Manager</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -291,8 +291,73 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <p>Sidebar content</p>
     </div>
   </aside>
- 
 
+
+  <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Create Manager Form</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <div class="container">
+
+              @if ($errors->any())
+<div class="alert alert-danger">
+<ul>
+ @foreach($errors->all() as $error)
+ <li>{{$error}}</li>
+ @endforeach
+ </ul>
+ </div>
+ @endif
+              <form method="POST" action="{{route('managers.store')}}">
+              @csrf
+                <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" name="email">
+                  </div>
+                  <div class="form-group">
+                    <label for="nationalid">National_id</label>
+                    <input type="text" class="form-control" id="nationalid" placeholder="enter national_id" name="national_id">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Choose an image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                    <div class="form-group">
+                    <label for="nationalid">Created_at</label>
+                    <input type="date" class="form-control" id="date" placeholder="enter the date" name="created_at">
+                  </div> 
+                  
+                  
+
+                  <div class="form-group text-center">
+
+                  <button type="submit" class="btn btn-success">create</button>
+
+                  </div>
+ 
+              </form>
+              </div>
+  
 <!-- jQuery -->
 <!-- <script src="plugins/jquery/jquery.min.js"></script> -->
 

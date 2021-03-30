@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePostRequest2 extends FormRequest
+class StoreReceptionistRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,6 +21,7 @@ class StorePostRequest2 extends FormRequest
      *
      * @return array
      */
+   
     public function rules()
     {
         $rules =  [
@@ -40,4 +41,5 @@ class StorePostRequest2 extends FormRequest
 
         return $rules;
     }
+
 }

@@ -5,20 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
-class Receptionist extends Authenticatable
+class Manager extends Model
 {
     use HasFactory;
+    protected $table = "managers";
 
-    use Notifiable;
-
-    
-
-    protected $table = "receptionists";
-    protected $guard = 'receptionist';
  
     protected $fillable = [
         'name',
@@ -26,7 +17,7 @@ class Receptionist extends Authenticatable
         'password',
         'national_id',
         'image',
-        'manager_name',
+       
     ];
  
     protected $hidden = [
