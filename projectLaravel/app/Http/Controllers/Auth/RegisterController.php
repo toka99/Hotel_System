@@ -58,9 +58,12 @@ class RegisterController extends Controller
         $receptionist = Receptionist::create([
             'name' => $request['name'],
             'email' => $request['email'],
+            'image' => $request['image'],
+            'manager_name' => $request['manager_name'],
+            'national_id' => $request['national_id'],
             'password' => Hash::make($request['password']),
         ]);
-        return redirect()->intended('login/reseptionist');
+        return redirect()->intended('login/receptionist');
     }
 
     /**

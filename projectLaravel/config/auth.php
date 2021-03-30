@@ -82,7 +82,7 @@ return [
 
         'receptionists' => [
             'driver' => 'eloquent',
-            'model' => App\Receptionist::class,
+            'model' => App\Models\Receptionist::class,
         ],
     ],
 
