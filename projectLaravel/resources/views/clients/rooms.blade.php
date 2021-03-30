@@ -4,6 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Simple Tables</title>
+  <a  href="login/manager"class="btn btn-danger">manager</a>
+  <a  href="login/client"class="btn btn-info">client</a>
+  <a  href="login/receptionist"class="btn btn-warning">receptionist</a>
+
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

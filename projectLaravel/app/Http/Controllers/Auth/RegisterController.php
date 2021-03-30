@@ -107,6 +107,7 @@ class RegisterController extends Controller
     //client
     public function showClientRegisterForm()
     {
+        
         return view('auth.register', ['url' => 'client']);
     }
     protected function createClient(Request $request)
