@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Receptionist extends Model
+class Manager extends Model
 {
     use HasFactory;
-    protected $table = "receptionists";
+    protected $table = "managers";
 
  
     protected $fillable = [
@@ -17,7 +17,7 @@ class Receptionist extends Model
         'password',
         'national_id',
         'image',
-        'manager_name',
+       
     ];
  
     protected $hidden = [

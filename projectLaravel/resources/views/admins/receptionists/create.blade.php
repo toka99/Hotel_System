@@ -220,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/receptionists" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Receptionists
@@ -315,7 +315,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <div class="card-body">
                 <div class="form-group">
                     <label for="name">Name</label>
-<<<<<<< HEAD
+
                     <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
                   </div>
                   <div class="form-group">
@@ -329,31 +329,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <div class="form-group">
                     <label for="nationalid">National_id</label>
                     <input type="text" class="form-control" id="nationalid" placeholder="enter national_id" name="national_id">
-=======
-                    <input name="name" type="text" class="form-control" id="name" placeholder="Enter name">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  </div>
-                  <div class="form-group">
-                    <label for="nationalid">National_id</label>
-                    <input name="national_id" type="text" class="form-control" id="nationalid" placeholder="enter national_id">
->>>>>>> e03a145b68172a3116c29ba15a8bfc505df3e2e8
+
+                  
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">Choose an image</label>
                     <div class="input-group">
                       <div class="custom-file">
-<<<<<<< HEAD
+
                         <input type="file" class="custom-file-input" id="exampleInputFile" name="image">
-=======
+
                         <input  name="image" type="file" class="custom-file-input" id="exampleInputFile">
->>>>>>> e03a145b68172a3116c29ba15a8bfc505df3e2e8
+
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <div class="input-group-append">
@@ -369,24 +356,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   
                   <div class="form-group">
                     <label for="manager name">Manager Name</label>
-<<<<<<< HEAD
+
                     <input type="text" class="form-control" id="manager name" placeholder="enter manager name" name="manager_name">
-=======
-                    <input name="manager_name" type="text" class="form-control" id="manager_name" placeholder="enter manager name">
->>>>>>> e03a145b68172a3116c29ba15a8bfc505df3e2e8
+
                   </div>
 
 
                   <div class="form-group text-center">
-<<<<<<< HEAD
-=======
+
+
                   <button  type="submit" class="btn btn-primary btn-sm " >
                     Create Receptionist
                   </button>
                   </div>
->>>>>>> e03a145b68172a3116c29ba15a8bfc505df3e2e8
 
-                  <button type="submit" class="btn btn-success">create</button>
+
 
                   </div>
  

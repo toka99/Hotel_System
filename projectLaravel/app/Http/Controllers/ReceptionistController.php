@@ -82,7 +82,7 @@ public function create() {
 
  
  public function store(Request $request){
-<<<<<<< HEAD
+
     $request->validate([
 
         
@@ -93,26 +93,16 @@ public function create() {
             'manager_name'      => 'required',
             'created_at'        => 'required',
             'image'             => 'required',   
-=======
->>>>>>> e03a145b68172a3116c29ba15a8bfc505df3e2e8
+
+
 
     ]);
     $requestData = $request->all();
     Receptionist::create($requestData);
-<<<<<<< HEAD
+
     return redirect()->route('receptionists.index');
    
-    //return response()->json()->redirectToRoute('admins.receptionists.index');
-=======
-    User::create([
-        'email' => $request['email'],
-        'password' => $request['password'],
-        'role' => $request['reseptionist'],
 
-    ]);
-    //return redirect()->route('admins.receptionists.index');
-    return response()->json(['success' => 'Data Added successfully.']);
->>>>>>> e03a145b68172a3116c29ba15a8bfc505df3e2e8
  }
 
  
@@ -138,7 +128,7 @@ public function create() {
         'name'              => 'required',
         'email'             => 'required|email|unique:receptionists,email,'.$receptionist->id,
         'password'          => 'required|min:8',
-        'national_id'       => 'required|min:14|unique:receptionists,national_id'.$receptionist->id,
+        'national_id'       => 'required|min:14|unique:receptionists,national_id,'.$receptionist->id,
         'manager_name'      => 'required',
         'created_at'        => 'required',
         'image'             => 'required',   

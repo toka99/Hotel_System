@@ -347,10 +347,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <input type="date" class="form-control" id="date" placeholder="enter the date" value="{{$manager['created_at']}}" name="created_at">
                   </div> 
                   
-                  <div class="form-group">
-                    <label for="manager name">Manager Name</label>
-                    <input type="text" class="form-control" id="manager name" placeholder="enter manager name" value="{{$manager['manager_name']}}" name="manager_name">
-                  </div>
+                  
 
 
                   
