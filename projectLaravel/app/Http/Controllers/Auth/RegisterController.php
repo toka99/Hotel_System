@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers\Auth;
 
+
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Client;
+use App\Models\Receptionist;
+use App\Models\Manager;
+
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use DB;
+
+use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     /*
@@ -41,7 +47,82 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:admin');
+        $this->middleware('guest:manager');
+        $this->middleware('guest:receptionist');
+        $this->middleware('guest:client');
 
+    }
+    //admin
+    public function showAdminRegisterForm()
+    {
+        return view('auth.register', ['url' => 'admin']);
+    }
+    protected function createAdmin(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $admin = Admin::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/admin');
+    }
+    //manager
+    public function showManagerRegisterForm()
+    {
+        return view('auth.register', ['url' => 'manager']);
+    }
+    protected function createManager(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $manager = Manager::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'image' => $request['image'],
+            'national_id' => $request['national_id'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/manager');
+    }
+
+    //receptionist
+    public function showReceptionistRegisterForm()
+    {
+        return view('auth.register', ['url' => 'receptionist']);
+    }
+    protected function createReceptionist(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $receptionist = Receptionist::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'image' => $request['image'],
+            'manager_name' => $request['manager_name'],
+            'national_id' => $request['national_id'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/receptionist');
+    }
+    //client
+    public function showClientRegisterForm()
+    {
+        
+        return view('auth.register', ['url' => 'client']);
+    }
+    protected function createClient(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $client = Client::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'image' => $request['image'],
+            'gender' => $request['gender'],
+            'country' => $request['country'],
+            
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/client');
     }
 
     /**
@@ -68,22 +149,22 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
  
-        $user= User::create([
+        return User::create([
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
 
-        Client::create([
-            'name' => $data['name'],
-            'image'=>$data['image'],
-            'email' => $data['email'],
-            'country' => $data['country'],
-            'gender' => $data['gender'],
+        // Client::create([
+        //     'name' => $data['name'],
+        //     'image'=>$data['image'],
+        //     'email' => $data['email'],
+        //     'country' => $data['country'],
+        //     'gender' => $data['gender'],
 
-            'password' => Hash::make($data['password']),
-        ]);
+        //     'password' => Hash::make($data['password']),
+        // ]);
      
-        return $user;
+        // return $user;
     }
 
    

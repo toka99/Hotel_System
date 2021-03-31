@@ -2,31 +2,64 @@
 
 namespace App\Http\Middleware;
 
-use App\Providers\RouteServiceProvider;
-use Closure;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+    use Closure;
+    use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
-{
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  ...$guards
-     * @return mixed
-     */
-    public function handle(Request $request, Closure $next, ...$guards)
+    class RedirectIfAuthenticated
     {
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+        public function handle($request, Closure $next, $guard = null)
+        {
+            if ($guard == "admin" && Auth::guard($guard)->check()) {
+                return redirect('/admin');
             }
-        }
+            if ($guard == "manager" && Auth::guard($guard)->check()) {
+                return redirect('/manager');
+            }
+            if ($guard == "receptionist" && Auth::guard($guard)->check()) {
+                return redirect('/receptionist');
+            }
+            if ($guard == "client" && Auth::guard($guard)->check()) {
+                return redirect('/client');
+            }
+            
+            if (Auth::guard($guard)->check()) {
+                return redirect('/home');
+            }
 
-        return $next($request);
+            return $next($request);
+        }
     }
-}
+
+// namespace App\Http\Middleware;
+
+// use App\Providers\RouteServiceProvider;
+// use Closure;
+// use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Auth;
+
+// class RedirectIfAuthenticated
+// {
+//     /**
+//      * Handle an incoming request.
+//      *
+//      * @param  \Illuminate\Http\Request  $request
+//      * @param  \Closure  $next
+//      * @param  string|null  ...$guards
+//      * @return mixed
+//      */
+//     public function handle(Request $request, Closure $next, ...$guards)
+//     {
+//         $guards = empty($guards) ? [null] : $guards;
+        
+//         foreach ($guards as $guard) {
+//             if ($guard == "receptionist" && Auth::guard($guard)->check()) {
+//                 return redirect('/receptionist');
+//             }
+//             if (Auth::guard($guard)->check()) {
+//                 return redirect(RouteServiceProvider::HOME);
+//             }
+//         }
+
+//         return $next($request);
+//     }
+// }
