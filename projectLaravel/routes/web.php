@@ -143,6 +143,7 @@ Route::put('/adminfloors/{floor}', [FloorController::class, 'update'])->name('ad
 Route::delete('/adminfloors/{floor}', [FloorController::class, 'destroy'])->name('adminfloors.destroy');//->middleware('auth');                              
 Route::get('adminfloors/list', [FloorController::class, 'getFloors'])->name('adminfloors.list'); //Data table
 
+<<<<<<< HEAD
 //admin(requestclient)
 Route::get('adminpendingclients/list', [ClientController::class, 'getPendingClients'])->name('adminpendingclients.list'); //Data table
 Route::get('adminapproveclients/list', [ClientController::class, 'getApprovedClients'])->name('adminapproveclients.list'); //Data table
@@ -173,3 +174,6 @@ Route::delete('/adminreservationclients/{reservation}', [ReservationController::
 
 Route::get('adminreservationclients/list', [ReservationController::class, 'getReservations'])->name('adminreservationclients.list'); //Data table
 
+=======
+  
+>>>>>>> c55da3359aa6bf1fd19946306afdbac484ce083f
