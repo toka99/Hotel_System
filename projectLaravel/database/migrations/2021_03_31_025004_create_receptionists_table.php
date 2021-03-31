@@ -4,30 +4,33 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateManagersTable extends Migration
+class CreateReceptionistsTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-   
     public function up()
     {
-        Schema::create('managers', function (Blueprint $table) {
+        Schema::create('receptionists', function (Blueprint $table) {
+         
+
             $table->id();
             $table->string('name');
-            //$table->enum('level', [ 'receptionist','admin','manager', 'client'])->default('receptionist');    
             $table->string('national_id')->unique();
             $table->string('email')->unique();
-            $table->string('image')->nullable();
+            $table->string('image')->nullable()->default("avatar2.png");
+            $table->string('manager_name');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+
+
+
         });
     }
 
-
-    
     
 }

@@ -24,5 +24,12 @@ class Receptionist extends Model
         'remember_token'
     ];
  
+
+     
+    public function manager() //foreign key 
+    {
+        return $this->belongsTo(Manager::class);
+    }
+
     
 }

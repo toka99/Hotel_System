@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImageToReceptionists extends Migration
+class EditRoomsSetIsReservedDefaultValue extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class AddImageToReceptionists extends Migration
      */
     public function up()
     {
-        Schema::table('receptionists', function (Blueprint $table) {
-            $table->string('image')->nullable();
+        Schema::table('rooms', function (Blueprint $table) {
+            $table->boolean('is_reserved')->default(0);
         });
+        
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+
    
 }

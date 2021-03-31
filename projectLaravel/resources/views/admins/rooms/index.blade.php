@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Admin| Receptionist index</title>
+  <title>Admin| Rooms index</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -252,7 +252,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="receptionist.manager.name" class="nav-link">
+            <a href="/adminrooms" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Rooms
@@ -276,13 +276,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Receptionists </h1>
+            <h1 class="m-0">Manage Rooms</h1>
             <br>
 
             
-            <a href="{{route('adminreceptionists.create')}}"  type="button" class="btn btn-primary btn-sm">
+            <a href="{{route('adminrooms.create')}}"  type="button" class="btn btn-primary btn-sm">
               
-                Create Receptionist
+                Create Room
             </a>
            </form>
               
@@ -320,13 +320,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Password</th>
-                <th>Email</th>
-                <th>National_id</th>
-                <!-- <th>Image</th> -->
-                <th>Created_at</th>
-                <th>Manager Name</th>
+                <th>Number</th>                
+                <th>Capacity</th>
+                <th>Price ($)</th>
                 <th>Actions</th>
                 
             </tr>
@@ -356,16 +352,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('adminreceptionists.list') }}",
+        ajax: "{{ route('adminrooms.list') }}",
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'name', name: 'name'},
-            {data: 'password', name: 'password'},
-            {data: 'email', name: 'email'},
-            {data: 'national_id', name: 'national_id'},
-            {data: 'created_at', name: 'created_at'} ,   
-            {data: 'manager_name', name: 'manager_name'}, 
-            
+            {data: 'number', name: 'number'},
+            {data: 'capacity', name: 'capacity'},
+            {data: 'price', name: 'price'},
+
+                    
             {
                 data: 'action', 
                 name: 'action', 

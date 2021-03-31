@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Receptionist;
+
+use App\Models\Manager;
+
 use App\Models\User;
 
 //use App\Http\Controllers\Requests\StoreReceptionistRequest; 
@@ -72,10 +75,14 @@ class ReceptionistController extends Controller
 
 
       // 'users' => User::all()     this related to the create el part bta3 el loop of el drop down list mmkn ybwa managers hna
-public function create() {
-    return view('admins.receptionists.create');
 
- }
+
+ public function create() {
+    return view('admins.receptionists.create',[
+        'managers' => Manager::all()
+    ]);
+
+    }
 
 
 
@@ -91,8 +98,8 @@ public function create() {
             'password'          => 'required|min:8',
             'national_id'       => 'required|min:14|unique:receptionists,national_id',
             'manager_name'      => 'required',
-            'created_at'        => 'required',
-            'image'             => 'required',   
+            // 'created_at'        => 'required',
+             'image'             => 'required',   
 
 
 
@@ -100,7 +107,7 @@ public function create() {
     $requestData = $request->all();
     Receptionist::create($requestData);
 
-    return redirect()->route('receptionists.index');
+    return redirect()->route('adminreceptionists.index');
    
 
  }
@@ -109,11 +116,11 @@ public function create() {
 
 
  //'users'=>User::all()  related to edit fun. d bta3t l drop down list bta3t l post creator mmkn n3mlha ll mangers w gwa l []
- public function edit($receptionist){
 
-    $receptionist = Receptionist::find($receptionist) ;
-    return view('admins.receptionists.edit',['receptionist'=>$receptionist]);
- 
+
+    public function edit(Receptionist $receptionist){
+        $managers = Manager::all();
+        return view('admins.receptionists.edit', compact('receptionist', 'managers'));
     }
 
 
@@ -130,7 +137,7 @@ public function create() {
         'password'          => 'required|min:8',
         'national_id'       => 'required|min:14|unique:receptionists,national_id,'.$receptionist->id,
         'manager_name'      => 'required',
-        'created_at'        => 'required',
+        // 'created_at'        => 'required',
         'image'             => 'required',   
 
     ]);
@@ -138,7 +145,7 @@ public function create() {
 
     $receptionist->update($request->all());
 
-    return redirect()->route('receptionists.index') ->with('success','Receptionist updated successfully');
+    return redirect()->route('adminreceptionists.index') ->with('success','Receptionist updated successfully');
     
  }
 
@@ -151,7 +158,7 @@ public function create() {
  public function destroy(Receptionist $receptionist){
     
      $receptionist->delete();
-     return redirect()->route('receptionists.index')->with('success','Receptionist deleted successfully');
+     return redirect()->route('adminreceptionists.index')->with('success','Receptionist deleted successfully');
                                               
  }                          
 
