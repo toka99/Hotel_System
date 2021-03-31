@@ -141,4 +141,3 @@ Route::delete('/adminfloors/{floor}', [FloorController::class, 'destroy'])->name
 Route::get('adminfloors/list', [FloorController::class, 'getFloors'])->name('adminfloors.list'); //Data table
 
   
-

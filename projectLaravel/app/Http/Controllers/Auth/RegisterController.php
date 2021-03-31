@@ -6,9 +6,15 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
-use App\Models\Client;
-use App\Models\Receptionist;
+use App\Models\Admin;
 use App\Models\Manager;
+use App\Models\Receptionist;
+
+use App\Models\Client;
+
+
+
+
 
 
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -66,6 +72,12 @@ class RegisterController extends Controller
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
         ]);
+        DB::table('users')->insert([
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+             'role'=>'admin'
+
+            ]);
         return redirect()->intended('login/admin');
     }
     //manager
@@ -83,6 +95,12 @@ class RegisterController extends Controller
             'national_id' => $request['national_id'],
             'password' => Hash::make($request['password']),
         ]);
+        DB::table('users')->insert([
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+             'role'=>'manager'
+
+            ]);
         return redirect()->intended('login/manager');
     }
 
@@ -102,6 +120,15 @@ class RegisterController extends Controller
             'national_id' => $request['national_id'],
             'password' => Hash::make($request['password']),
         ]);
+        
+
+        DB::table('users')->insert([
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+             'role'=>'receptionist'
+
+            ]);
+        
         return redirect()->intended('login/receptionist');
     }
     //client
@@ -122,6 +149,13 @@ class RegisterController extends Controller
             
             'password' => Hash::make($request['password']),
         ]);
+        DB::table('users')->insert([
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+             'role'=>'client'
+
+            ]);
+
         return redirect()->intended('login/client');
     }
 
