@@ -21,17 +21,10 @@ class CreateClientsTable extends Migration
             $table->string('image');
             $table->string('gender');
             $table->string('country');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('clients');
-    }
+    
 }

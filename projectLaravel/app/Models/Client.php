@@ -25,11 +25,14 @@ class Client extends Authenticatable
         'gender',
         'country',
         'image',
+        'status'
     ];
 
     protected $hidden = [
         'remember_token'
     ];
+
+
     
 }
 

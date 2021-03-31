@@ -19,7 +19,7 @@ class CreateRoomsTable extends Migration
             $table->unsignedInteger('capacity');
             $table->unsignedInteger('price');
             $table->unsignedInteger('floor_number');
-            $table->boolean('is_reserved');
+            $table->boolean('is_reserved')->default(0);
             $table->timestamps();
         });
     }
