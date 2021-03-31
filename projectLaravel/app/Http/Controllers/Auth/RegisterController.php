@@ -13,6 +13,13 @@ use App\Models\Client;
 
 
 
+use App\Models\Client;
+
+
+
+
+
+
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -130,6 +137,7 @@ class RegisterController extends Controller
     //client
     public function showClientRegisterForm()
     {
+        
         return view('auth.register', ['url' => 'client']);
     }
     protected function createClient(Request $request)

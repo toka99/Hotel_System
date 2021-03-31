@@ -99,7 +99,7 @@ public function create() {
     $requestData = $request->all();
     Manager::create($requestData);
 
-    return redirect()->route('managers.index');
+    return redirect()->route('adminmanagers.index');
    
 
  }
@@ -136,7 +136,7 @@ public function create() {
 
     $manager->update($request->all());
 
-    return redirect()->route('managers.index') ->with('success','Manager updated successfully');
+    return redirect()->route('adminmanagers.index') ->with('success','Manager updated successfully');
     
  }
 
@@ -149,7 +149,7 @@ public function create() {
  public function destroy(Manager $manager){
     
      $manager->delete();
-     return redirect()->route('managers.index')->with('success','Manager deleted successfully');
+     return redirect()->route('adminmanagers.index')->with('success','Manager deleted successfully');
                                               
  }                          
 

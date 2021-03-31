@@ -7,8 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Admin| Receptionist index</title>
+  <title>Admin|Edit  Floor</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -18,10 +17,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> -->
   <!-- Theme style -->
   <!-- <link rel="stylesheet" href="dist/css/adminlte.min.css"> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
-    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css"> 
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -252,7 +248,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="receptionist.manager.name" class="nav-link">
+            <a href="/adminrooms" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Rooms
@@ -276,16 +272,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Receptionists </h1>
-            <br>
-
-            
-            <a href="{{route('adminreceptionists.create')}}"  type="button" class="btn btn-primary btn-sm">
-              
-                Create Receptionist
-            </a>
-           </form>
-              
+            <h1 class="m-0">Edit Floor</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -304,89 +291,51 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <p>Sidebar content</p>
     </div>
   </aside>
-
-
-
-
-  <!-- from hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee -->
-
-
-
-<div class="box">
-    
-    <!-- /.box-header -->
-    <div class="box-body">
-    <table class="table table-bordered yajra-datatable">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Password</th>
-                <th>Email</th>
-                <th>National_id</th>
-                <!-- <th>Image</th> -->
-                <th>Created_at</th>
-                <th>Manager Name</th>
-                <th>Actions</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-</div>
-
-     
-  
-                
-            
-         
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
-
-
-
-<script type="text/javascript">
-  $(function () {
-    $.noConflict();
-    var table = $('.yajra-datatable').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('adminreceptionists.list') }}",
-        columns: [
-            {data: 'id', name: 'id'},
-            {data: 'name', name: 'name'},
-            {data: 'password', name: 'password'},
-            {data: 'email', name: 'email'},
-            {data: 'national_id', name: 'national_id'},
-            {data: 'created_at', name: 'created_at'} ,   
-            {data: 'manager_name', name: 'manager_name'}, 
-            
-            {
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true
-            },
-        ]
-    });
-    
-  });
-
-</script>
-
-
-
-
-  <!-- to hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-->
  
+  <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Edit Floor Form</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <div class="container">
+              
+              @if ($errors->any())
+<div class="alert alert-danger">
+<ul>
+ @foreach($errors->all() as $error)
+ <li>{{$error}}</li>
+ @endforeach
+ </ul>
+ </div>
+ @endif
+              <form method="POST" action="{{route('adminfloors.update', ['floor' => $floor['id']])}}">
+              @csrf
+              @method('PUT')
+                <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter floor name" value="{{$floor['name']}}" name="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputNumber">Number</label>
+                    <input type="text" class="form-control" id="exampleInputNumber" placeholder="Enter Floor Number" value="{{$floor['floor_number']}}" name="floor_number">
+                  </div>
+                 
+                   
+                  
+                  <div class="form-group text-center">
 
+                  <button type="submit" class="btn btn-success">Update Floor</button>
+
+                  </div>
+
+                  
+                 
+</form>
+</div>
 <!-- jQuery -->
-
+<!-- <script src="plugins/jquery/jquery.min.js"></script> -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

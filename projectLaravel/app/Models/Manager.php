@@ -30,5 +30,5 @@ class Manager extends Authenticatable
         'remember_token'
     ];
  
-    
+   
 }

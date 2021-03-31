@@ -164,7 +164,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="/admins" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Hotel System</span>
     </a>
@@ -177,7 +177,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin Main Menu</a>
+          <a href="/admins" class="d-block">Admin Main Menu</a>
         </div>
       </div>
 
@@ -220,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/adminreceptionists" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Receptionists
@@ -230,7 +230,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/adminmanagers" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Managers
@@ -239,7 +239,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/adminfloors" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Floors
@@ -248,7 +248,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="/adminrooms" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Rooms
@@ -272,7 +272,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Mangers</h1>
+            <h1 class="m-0">Edit Manager</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -294,7 +294,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
  
   <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Edit Managers Form</h3>
+                <h3 class="card-title">Edit Manager Form</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -309,7 +309,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
  </ul>
  </div>
  @endif
-              <form method="POST" action="{{route('managers.update', ['manager' => $manager['id']])}}">
+              <form method="POST" action="{{route('adminmanagers.update', ['manager' => $manager['id']])}}">
               @csrf
               @method('PUT')
                 <div class="card-body">

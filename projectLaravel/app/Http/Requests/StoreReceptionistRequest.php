@@ -27,7 +27,6 @@ class StoreReceptionistRequest extends FormRequest
         $rules =  [
             'name'              => 'required',
             'phone'             => 'required|numeric|regex:/(01)[0-9]{9}/|unique:receptionists',
-           // 'level'             => 'required|in:manager,receptionist,client',
             'email'             => 'required|email|unique:receptionists,email',
             'password'          => 'required|min:8',
             'national_id'       => 'required|min:14|unique:receptionists,national_id',

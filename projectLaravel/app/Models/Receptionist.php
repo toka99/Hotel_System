@@ -33,5 +33,12 @@ class Receptionist extends Authenticatable
         'remember_token'
     ];
  
+
+     
+    public function manager() //foreign key 
+    {
+        return $this->belongsTo(Manager::class);
+    }
+
     
 }
