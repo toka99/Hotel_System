@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 use App\Models\Manager;
 use App\Models\User;
@@ -96,8 +97,15 @@ public function create() {
 
 
     ]);
-    $requestData = $request->all();
-    Manager::create($requestData);
+    // $requestData = $request->all();
+    // Manager::create($requestData);
+    $manager = Manager::create([
+        'name' => $request['name'],
+        'email' => $request['email'],
+        'image' => $request['image'],
+        'national_id' => $request['national_id'],
+        'password' => Hash::make($request['password']),
+    ]);
 
     return redirect()->route('adminmanagers.index');
    

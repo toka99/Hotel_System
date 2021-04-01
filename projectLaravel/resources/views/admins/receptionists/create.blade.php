@@ -308,15 +308,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
  <li>{{$error}}</li>
  @endforeach
  </ul>
- </div>
- @endif
+  </div>
+   @endif
               <form method="POST" action="{{route('adminreceptionists.store')}}">
               @csrf
-              <div class="card-body">
+            <div class="card-body">
                 <div class="form-group">
                     <label for="name">Name</label>
 
-                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" >
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
@@ -347,25 +347,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </div>
                 </div>
                   
-<<<<<<< HEAD
-                    <div class="form-group">
-                    <label for="created_at">Created_at</label>
-=======
+
+                    
+
                   <div class="form-group">
                     <label for="nationalid">Created_at</label>
->>>>>>> 9fc94e4ca8e8720c1d350cead3ca05025f79d1fa
+
                     <input type="date" class="form-control" id="date" placeholder="enter the date" name="created_at">
                   </div> 
 
 
 
-                  <div class="form-group">
+                  <!-- <div class="form-group">
               <label for="manager_name">Manager Name</label>
-              <select name="manager_name" class="form-control" id="manager_name">
+               <select name="manager_name" class="form-control" id="manager_name">
               @foreach ($managers as $manager)
               <option value="{{$manager->name}}">{{$manager->name}}</option>
                @endforeach
-               </select>
+               </select> 
+               <input type="text" class="form-control" id="manger_name" placeholder="enter the date" name="manger_name">
+              </div> -->
+
+
+              <div class="form-group">
+              <label for="manager_name">Manager Name</label>
+              <!-- <select name="manager_name" class="form-control" id="manager_name"> -->
+              <!-- @foreach ($managers as $manager) -->
+              <!-- <option value="{{$manager->name}}">{{$manager->name}}</option> -->
+               <!-- @endforeach -->
+               <!-- </select> -->
+               <input type="text" class="form-control" id="date" placeholder="enter the name" name="manager_name">
+
               </div>
 
 
@@ -382,7 +394,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
  
               </form>
-              </div>
+  </div>
   
 <!-- jQuery -->
 <!-- <script src="plugins/jquery/jquery.min.js"></script> -->

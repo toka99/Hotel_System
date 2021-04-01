@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 use App\Models\Receptionist;
 
 use App\Models\Manager;
@@ -104,8 +104,16 @@ class ReceptionistController extends Controller
 
 
     ]);
-    $requestData = $request->all();
-    Receptionist::create($requestData);
+    // $requestData = $request->all();
+    // Receptionist::create($requestData);
+    $receptionist = Receptionist::create([
+        'name' => $request['name'],
+        'email' => $request['email'],
+        'image' => $request['image'],
+        'manager_name' => $request['manager_name'],
+        'national_id' => $request['national_id'],
+        'password' => Hash::make($request['password']),
+    ]);
 
     return redirect()->route('adminreceptionists.index');
    

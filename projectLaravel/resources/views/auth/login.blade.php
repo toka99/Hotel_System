@@ -16,7 +16,7 @@
                         @endisset
                             
                         @csrf
-
+                         
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -69,8 +69,16 @@
                                     </a>
                                 @endif
                             </div>
+                            <!-- <div class="col-md-8 m-auto mt-3"> -->
+                          @if($url=='client')
+                          <a  href="{{ route('register.client') }}" class='btn btn-success mt-4'>Create New Account<a>
+                         @endif
+                         <!-- </div> -->
                         </div>
+                        
+                        
                     </form>
+                    
                 </div>
             </div>
         </div>
