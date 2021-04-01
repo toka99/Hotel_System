@@ -51,8 +51,8 @@ Route::view('/client', 'client');
 
 
 //manager Manager
-Route::get('/login/manager', [App\Http\Controllers\Auth\LoginController::class,'showManagerLoginForm']);
-Route::get('/register/manager', [App\Http\Controllers\Auth\RegisterController::class,'showManagerRegisterForm']);
+Route::get('/login/manager', [App\Http\Controllers\Auth\LoginController::class,'showManagerLoginForm'])->name('login.manager');
+Route::get('/register/manager', [App\Http\Controllers\Auth\RegisterController::class,'showManagerRegisterForm'])->name('register.manager');
 
 Route::post('/login/manager',[App\Http\Controllers\Auth\LoginController::class,'managerLogin']);
 Route::post('/register/manager', [App\Http\Controllers\Auth\RegisterController::class,'createManager']);
@@ -66,15 +66,16 @@ Route::post('/register/admin', [App\Http\Controllers\Auth\RegisterController::cl
 
 
  //receptionist
- Route::get('/login/receptionist', [App\Http\Controllers\Auth\LoginController::class,'showReceptionistLoginForm']);    Route::get('/register/receptionist', [App\Http\Controllers\Auth\RegisterController::class,'showReceptionistRegisterForm']);
+ Route::get('/login/receptionist', [App\Http\Controllers\Auth\LoginController::class,'showReceptionistLoginForm'])->name('login.receptionist');  
+ Route::get('/register/receptionist', [App\Http\Controllers\Auth\RegisterController::class,'showReceptionistRegisterForm'])->name('register.receptionist');
 
     
  Route::post('/login/receptionist',[App\Http\Controllers\Auth\LoginController::class,'receptionistLogin']);
 Route::post('/register/receptionist', [App\Http\Controllers\Auth\RegisterController::class,'createReceptionist']);
  //client  Client
 
- Route::get('/login/client', [App\Http\Controllers\Auth\LoginController::class,'showClientLoginForm']);
- Route::get('/register/client', [App\Http\Controllers\Auth\RegisterController::class,'showClientRegisterForm']);
+ Route::get('/login/client', [App\Http\Controllers\Auth\LoginController::class,'showClientLoginForm'])->name('login.client');
+ Route::get('/register/client', [App\Http\Controllers\Auth\RegisterController::class,'showClientRegisterForm'])->name('register.client');
  Route::post('/login/client',[App\Http\Controllers\Auth\LoginController::class,'clientLogin']);
 Route::post('/register/client', [App\Http\Controllers\Auth\RegisterController::class,'createClient']);
 

@@ -364,6 +364,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                @endforeach
                </select>
               </div>
+              <div class="form-group text-center">
+
+
+                  <button  type="submit" class="btn btn-primary btn-sm " >
+                    Create Receptionist
+                  </button>
+                </div>
  
               </form>
   </div>
