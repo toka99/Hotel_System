@@ -5,6 +5,9 @@ use App\Http\Controllers\ReceptionistController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\FloorController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ReservationController;
+
 
 
 /*
