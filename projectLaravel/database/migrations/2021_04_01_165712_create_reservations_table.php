@@ -19,8 +19,10 @@ class CreateReservationsTable extends Migration
             $table->unsignedInteger('accompany');
             $table->unsignedInteger('room_number');
             $table->unsignedInteger('paid_price');
+            $table->timestamps();
+
+  
         });
     }
-
 
 }

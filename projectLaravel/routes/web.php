@@ -143,7 +143,7 @@ Route::put('/adminfloors/{floor}', [FloorController::class, 'update'])->name('ad
 Route::delete('/adminfloors/{floor}', [FloorController::class, 'destroy'])->name('adminfloors.destroy');//->middleware('auth');                              
 Route::get('adminfloors/list', [FloorController::class, 'getFloors'])->name('adminfloors.list'); //Data table
 
-<<<<<<< HEAD
+
 //admin(requestclient)
 Route::get('adminpendingclients/list', [ClientController::class, 'getPendingClients'])->name('adminpendingclients.list'); //Data table
 Route::get('adminapproveclients/list', [ClientController::class, 'getApprovedClients'])->name('adminapproveclients.list'); //Data table
@@ -162,18 +162,15 @@ Route::get('/adminapproveclients/{client}/edit', [ClientController::class, 'edit
 Route::put('/adminapproveclients/{client}', [ClientController::class, 'update'])->name('adminapproveclients.update');//->middleware('auth'); e::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update')->middleware('auth'); 
 Route::delete('/adminapproveclients/{client}', [ClientController::class, 'destroy'])->name('adminapproveclients.destroy');//->middleware('auth');                              
 
+///////////////////////////////////////////////////////////////////////////////////////////
 
-//admin(reservations client)
-Route::get('/adminreservationclients', [ReservationController::class, 'index'])->name('adminreservationclients.index');//->middleware('auth');  
+
+//routes(admin,clients)
+Route::get('/adminreservationclients', [ReservationController::class, 'index'])->name('adminreservationclients.index');//->middleware('auth');        
 Route::get('/adminreservationclients/create', [ReservationController::class, 'create'])->name('adminreservationclients.create');//->middleware('auth');  
 Route::post('/adminreservationclients', [ReservationController::class, 'store'])->name('adminreservationclients.store');//->middleware('auth');
 Route::get('/adminreservationclients/{reservation}/edit', [ReservationController::class, 'edit'])->name('adminreservationclients.edit');//->middleware('auth'); 
 Route::put('/adminreservationclients/{reservation}', [ReservationController::class, 'update'])->name('adminreservationclients.update');//->middleware('auth'); e::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update')->middleware('auth'); 
 Route::delete('/adminreservationclients/{reservation}', [ReservationController::class, 'destroy'])->name('adminreservationclients.destroy');//->middleware('auth');                              
-
-
 Route::get('adminreservationclients/list', [ReservationController::class, 'getReservations'])->name('adminreservationclients.list'); //Data table
 
-=======
-  
->>>>>>> c55da3359aa6bf1fd19946306afdbac484ce083f

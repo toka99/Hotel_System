@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Admin| Client Reservations</title>
+  <title>Admin|Clients Reservations</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -276,7 +276,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Clients Reservations</h1>
+            <h1 class="m-0">Client Reservations</h1>
             <br>
 
           </div><!-- /.col -->
@@ -301,16 +301,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
+  <!-- from hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee -->
+
+
+
+<div class="box">
+    
+    <!-- /.box-header -->
     <div class="box-body">
     <table class="table table-bordered yajra-datatable">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Client Name</th>
-                <th>Client accompany</th>
-                <th>Room Number</th>
-                <th>Client Paid Price</th>
-                <th>Actions</th>
+                <th>Name</th>
+                <th>Accompany</th>
+                <th>room_number</th>
+                <!-- <th>Image</th> -->
+                <th>paid_price</th>
+              
                 
             </tr>
         </thead>
@@ -338,6 +346,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   $(function () {
     $.noConflict();
+  
     var table = $('.yajra-datatable').DataTable({
       
         processing: true,
@@ -348,16 +357,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'accompany', name: 'accompany'},
-            {data: 'room_number', name: 'room_number'},
+            {data: 'room_number', name: 'room_number'},   
             {data: 'paid_price', name: 'paid_price'},
-
-            {
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true
-            }
-            
+          
+     
 
         ]
       

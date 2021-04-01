@@ -346,14 +346,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     
                   </div>
                 </div>
-                  
-<<<<<<< HEAD
-                    <div class="form-group">
-                    <label for="created_at">Created_at</label>
-=======
+
+               
+
                   <div class="form-group">
                     <label for="nationalid">Created_at</label>
->>>>>>> 9fc94e4ca8e8720c1d350cead3ca05025f79d1fa
+
                     <input type="date" class="form-control" id="date" placeholder="enter the date" name="created_at">
                   </div> 
 

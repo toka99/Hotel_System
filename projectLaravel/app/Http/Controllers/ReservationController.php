@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Reservation;
+
+use App\Models\Client;
+
 use App\Models\User;
 
-//use App\Http\Controllers\Requests\StoreManagerRequest; 
-
 use DataTables;
+
 
 
 class ReservationController extends Controller
@@ -29,16 +31,13 @@ class ReservationController extends Controller
 
             return Datatables::of($data)
 
-                ->addColumn('action', 'helper.actionButtonsAdminReservations')
-
                 
-                ->rawColumns(['action'])
-
                 ->make(true);
 
         }
 
     }
+
 
 
 
@@ -57,21 +56,20 @@ class ReservationController extends Controller
 
 
     public function show($reservationId) {
-    // $reservation = Reservation::find($reservationId); //object of post model
-    // return view('admins.admins.show',[
-    //     'reservation' => $reservation,
-      
-
-    // ]);
+ //
+    
     }
 
 
 
       // 'users' => User::all()     this related to the create el part bta3 el loop of el drop down list mmkn ybwa managers hna
-public function create() {
-    // return view('admins.clients.create');
 
- }
+ public function create() {
+    // return view('admins.clients.create',[
+    //     'reservations' => Reservation::all()
+    // ]);
+
+    }
 
 
 
@@ -81,21 +79,18 @@ public function create() {
 
     // $request->validate([
 
+    //     'number'             => 'required|min:4|integer|unique:rooms,number',
+    //     'capacity'           => 'required|integer',
+    //     'price'              => 'required',
+    //     'floor_number'       => 'required',
         
-    //         'name'              => 'required',
-    //         'email'             => 'required|email|unique:managers,email',
-    //         'password'          => 'required|min:8',
-    //         'national_id'       => 'required|min:14|unique:managers,national_id',
-    //         'created_at'        => 'required',
-    //         'image'             => 'required',   
+         
 
-
-
-    // ]);
+    // // ]);
     // $requestData = $request->all();
     // Reservation::create($requestData);
 
-    // return redirect()->route('adminreservationclients.index');
+    // return redirect()->route('adminrooms.index');
    
 
  }
@@ -104,35 +99,38 @@ public function create() {
 
 
  //'users'=>User::all()  related to edit fun. d bta3t l drop down list bta3t l post creator mmkn n3mlha ll mangers w gwa l []
- public function edit($reservation){
+//  public function edit($reservation){
 
-    // $reservation = Reservation::find($reservation) ;
-    // return view('admins.clients.edit',['reservation'=>$reservation]);
+//     // $reservation = Reservation::find($reservation) ;
+//     // return view('admins.reservations.edit',['reservation'=>$reservation, 'reservations'=>Reservation::all()]);
  
-    }
+//     }
 
+    public function edit(Reservation $reservation)
+    {
+        // $reservations = Reservation::all();
+        // return view('admins.reservations.edit', compact('reservation', 'reservations'));
+    }
 
    
 
 
- public function update(Request $request, Reservation $reservation){
+ public function update(Request $request, reservation $reservation){
 
     // $request->validate([
 
     
-    //     'name'              => 'required',
-    //     'email'             => 'required|email|unique:managers,email,'.$manager->id,
-    //     'password'          => 'required|min:8',
-    //     'national_id'       => 'required|min:14|unique:managers,national_id,'.$manager->id,
-    //     'created_at'        => 'required',
-    //     'image'             => 'required',   
-
+    //     'number'             => 'required|min:4|integer|unique:rooms,number,'.$room->id,
+    //     'capacity'           => 'required|integer',
+    //     'price'              => 'required',
+        
+        
     // ]);
 
 
-    // $manager->update($request->all());
+    $reservation->update($request->all());
 
-    // return redirect()->route('adminmanagers.index') ->with('success','Manager updated successfully');
+    // return redirect()->route('adminreservations.index') ->with('success','Reservation updated successfully');
     
  }
 
@@ -140,17 +138,15 @@ public function create() {
 
 
 
-
-  //remove post
+  //remove room
  public function destroy(Reservation $reservation){
     
     //  $reservation->delete();
-    //  return redirect()->route('adminmanagers.index')->with('success','Manager deleted successfully');
+    //  return redirect()->route('adminreservations.index')->with('success','Reservation deleted successfully');
                                               
  }                          
 
 
  
 }
-
 
