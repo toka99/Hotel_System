@@ -151,7 +151,7 @@ class RegisterController extends Controller
             'image' => $request['image'],
             'gender' => $request['gender'],
             'country' => $request['country'],
-            
+            'status' => $request['status'],
             'password' => Hash::make($request['password']),
         ]);
         DB::table('users')->insert([
@@ -160,7 +160,7 @@ class RegisterController extends Controller
              'role'=>'client'
 
             ]);
-
+          $name=$request->name;
         return redirect()->intended('login/client');
     }
 

@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Client;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Hash;
 //use App\Http\Controllers\Requests\StoreManagerRequest; 
 
 
@@ -137,8 +137,19 @@ public function create() {
 
 
     // ]);
-    $requestData = $request->all();
-    Client::create($requestData);
+    // $requestData = $request->all();
+    // Client::create($requestData);
+
+    $client = Client::create([
+        'name' => $request['name'],
+        'email' => $request['email'],
+        'image' => $request['image'],
+        'gender' => $request['gender'],
+        'country' => $request['country'],
+        
+        
+        'password' => Hash::make($request['password']),
+    ]);
 
     return redirect()->route('adminrequestclients.index');
    

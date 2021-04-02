@@ -233,22 +233,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.sidebar -->
   </aside>
 
-
-
-
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">My Reservation</h1>
-            <br>
-
-    
-           </form>
-              
+            <h1 class="m-0">Edit your Profile</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -268,40 +259,50 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </div>
   </aside>
 
+  <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">edit Profile Form</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <div class="container">
 
+              @if ($errors->any())
+              <div class="alert alert-danger">
+              <ul>
+              @foreach($errors->all() as $error)
+              <li>{{$error}}</li>
+              @endforeach
+              </ul>
+              </div>
+              @endif
+              <form method="POST" action="{{route('clientreservation.store')}}">
+              @csrf
+                <div class="card-body">
+                <div class="form-group">
+                    <label for="number">Name</label>
+                    <input  type="text" class="form-control" id="number" placeholder="edit your name" name="room_number">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputCapaicty">E-mail</label>
+                    <input   type="text" class="form-control" id="capacity" placeholder="edit your email" name="accompany" >
+                  </div>
+                  
+                  
+              
 
+                  
 
-  <!-- from hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee -->
+                  <div class="form-group text-center">
 
+                  <button type="submit" class="btn btn-warning">Edit</button>
 
+                  </div>
+ 
+              </form>
+              </div>
 
-<div class="box">
-    
-    <!-- /.box-header -->
-    <div class="box-body">
-    <table class="table table-bordered yajra-datatable">
-        <thead>
-            <tr>
-                <!-- <th>Id</th> -->
-                <th>Room Number</th>                
-                <th>accompany</th>
-                <th>Price ($)</th>
-                <th>Actions</th>
-                
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-</div>
-
-     
-  
-                
-            
-         
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -309,18 +310,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(function () {
     $.noConflict();
     var table = $('.yajra-datatable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('clientreservation.list') }}",
+        ajax: "{{ route('clientrooms.list') }}",
         columns: [
             //{data: 'id', name: 'id'},
-            {data: 'room_number', name: 'Number'},
-            {data: 'accompany', name: 'accompany'},
-            {data: 'paid_price', name: 'price'},
+            {data: 'number', name: 'number'},
+            {data: 'capacity', name: 'capacity'},
+            {data: 'price', name: 'price'},
 
                     
             {
@@ -334,8 +335,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     
   });
 
-</script>
-
+</script> -->
 
 
 
