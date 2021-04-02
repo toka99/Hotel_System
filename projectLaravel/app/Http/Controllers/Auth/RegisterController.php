@@ -13,7 +13,7 @@ use App\Models\Client;
 
 
 
-use App\Models\Client;
+
 
 
 
@@ -47,6 +47,7 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+   // protected $redirectTo = 'adminreceptionists.store';
 
     /**
      * Create a new controller instance.
@@ -132,7 +133,8 @@ class RegisterController extends Controller
 
             ]);
         
-        return redirect()->intended('login/receptionist');
+       // return redirect()->intended('login/receptionist');
+       return redirect()->intended('adminreceptionists.store');
     }
     //client
     public function showClientRegisterForm()

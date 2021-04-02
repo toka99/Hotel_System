@@ -51,8 +51,8 @@ Route::view('/client', 'client');
 
 
 //manager Manager
-Route::get('/login/manager', [App\Http\Controllers\Auth\LoginController::class,'showManagerLoginForm']);
-Route::get('/register/manager', [App\Http\Controllers\Auth\RegisterController::class,'showManagerRegisterForm']);
+Route::get('/login/manager', [App\Http\Controllers\Auth\LoginController::class,'showManagerLoginForm'])->name('login.manager');
+Route::get('/register/manager', [App\Http\Controllers\Auth\RegisterController::class,'showManagerRegisterForm'])->name('register.manager');
 
 Route::post('/login/manager',[App\Http\Controllers\Auth\LoginController::class,'managerLogin']);
 Route::post('/register/manager', [App\Http\Controllers\Auth\RegisterController::class,'createManager']);
@@ -66,15 +66,16 @@ Route::post('/register/admin', [App\Http\Controllers\Auth\RegisterController::cl
 
 
  //receptionist
- Route::get('/login/receptionist', [App\Http\Controllers\Auth\LoginController::class,'showReceptionistLoginForm']);    Route::get('/register/receptionist', [App\Http\Controllers\Auth\RegisterController::class,'showReceptionistRegisterForm']);
+ Route::get('/login/receptionist', [App\Http\Controllers\Auth\LoginController::class,'showReceptionistLoginForm'])->name('login.receptionist');  
+ Route::get('/register/receptionist', [App\Http\Controllers\Auth\RegisterController::class,'showReceptionistRegisterForm'])->name('register.receptionist');
 
     
  Route::post('/login/receptionist',[App\Http\Controllers\Auth\LoginController::class,'receptionistLogin']);
 Route::post('/register/receptionist', [App\Http\Controllers\Auth\RegisterController::class,'createReceptionist']);
  //client  Client
 
- Route::get('/login/client', [App\Http\Controllers\Auth\LoginController::class,'showClientLoginForm']);
- Route::get('/register/client', [App\Http\Controllers\Auth\RegisterController::class,'showClientRegisterForm']);
+ Route::get('/login/client', [App\Http\Controllers\Auth\LoginController::class,'showClientLoginForm'])->name('login.client');
+ Route::get('/register/client', [App\Http\Controllers\Auth\RegisterController::class,'showClientRegisterForm'])->name('register.client');
  Route::post('/login/client',[App\Http\Controllers\Auth\LoginController::class,'clientLogin']);
 Route::post('/register/client', [App\Http\Controllers\Auth\RegisterController::class,'createClient']);
 
@@ -167,6 +168,7 @@ Route::delete('/adminapproveclients/{client}', [ClientController::class, 'destro
 
 //routes(admin,clients)
 Route::get('/adminreservationclients', [ReservationController::class, 'index'])->name('adminreservationclients.index');//->middleware('auth');        
+
 // Route::get('/adminreservationclients/create', [ReservationController::class, 'create'])->name('adminreservationclients.create');//->middleware('auth');  
 // Route::post('/adminreservationclients', [ReservationController::class, 'store'])->name('adminreservationclients.store');//->middleware('auth');
 // Route::get('/adminreservationclients/{reservation}/edit', [ReservationController::class, 'edit'])->name('adminreservationclients.edit');//->middleware('auth'); 
@@ -249,4 +251,12 @@ Route::get('/managerreservationclients', [ReservationController::class, 'indexma
 // Route::put('/managerreservationclients/{reservation}', [ReservationController::class, 'updatemanager'])->name('managerreservationclients.updatemanager');//->middleware('auth'); e::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update')->middleware('auth'); 
 // Route::delete('/managerreservationclients/{reservation}', [ReservationController::class, 'destroymanager'])->name('managerreservationclients.destroymanager');//->middleware('auth');                              
 Route::get('managerreservationclients/list', [ReservationController::class, 'getReservationsManager'])->name('managerreservationclients.list'); //Data table
+
+
+Route::get('/adminreservationclients/create', [ReservationController::class, 'create'])->name('adminreservationclients.create');//->middleware('auth');  
+Route::post('/adminreservationclients', [ReservationController::class, 'store'])->name('adminreservationclients.store');//->middleware('auth');
+Route::get('/adminreservationclients/{reservation}/edit', [ReservationController::class, 'edit'])->name('adminreservationclients.edit');//->middleware('auth'); 
+Route::put('/adminreservationclients/{reservation}', [ReservationController::class, 'update'])->name('adminreservationclients.update');//->middleware('auth'); e::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update')->middleware('auth'); 
+Route::delete('/adminreservationclients/{reservation}', [ReservationController::class, 'destroy'])->name('adminreservationclients.destroy');//->middleware('auth');                              
+Route::get('adminreservationclients/list', [ReservationController::class, 'getReservations'])->name('adminreservationclients.list'); //Data table
 
