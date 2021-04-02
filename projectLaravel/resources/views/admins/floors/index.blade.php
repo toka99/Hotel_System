@@ -310,6 +310,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- from hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee -->
 
+  @if (\Session::has('reserved'))
+    <div class="alert alert-danger">
+        <ul>
+            <li>{!! \Session::get('reserved') !!}</li>
+        </ul>
+    </div>
+@endif
+
+
+@if (\Session::has('success'))
+    <div class="alert alert-success">
+        <ul>
+            <li>{!! \Session::get('success') !!}</li>
+        </ul>
+    </div>
+@endif
+
 
 
 <div class="box">

@@ -1,5 +1,6 @@
 
 <a href="{{route('adminfloors.edit',['floor'=>$id])}}" class="edit btn btn-success btn-sm">Edit</a> 
+
 <form method="POST" action="{{route('adminfloors.destroy',['floor'=>$id])}}" >
 @csrf 
 @method('DELETE')

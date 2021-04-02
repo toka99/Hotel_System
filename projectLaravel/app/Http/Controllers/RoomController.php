@@ -101,6 +101,7 @@ class RoomController extends Controller
     return view('admins.rooms.create',[
         'floors' => Floor::all()
     ]);
+    
 
     }
 
@@ -230,16 +231,28 @@ class RoomController extends Controller
   //remove room
  public function destroy(Room $room){
     
+    if($room->is_reserved == 0 ) {
      $room->delete();
      return redirect()->route('adminrooms.index')->with('success','Room deleted successfully');
-                                              
+      } else {
+         
+        return redirect()->route('adminrooms.index')->with('reserved', 'Room  reserved'); 
+       
+     
+      }                                     
  }                          
 
  public function destroymanager(Room $room){
+        
+        if($room->is_reserved == 0 ) {
+        $room->delete();
+        return redirect()->route('managerrooms.indexmanager')->with('success','Room deleted successfully');
+    } else {
+            
+        return redirect()->route('adminrooms.index')->with('reserved', 'Room reserved'); 
     
-    $room->delete();
-    return redirect()->route('managerrooms.indexmanager')->with('success','Room deleted successfully');
-                                             
+    
+    }                                         
 }                          
 
 

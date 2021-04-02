@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Floor;
+use App\Models\Room;
 
 use App\Models\User;
 
@@ -217,17 +218,56 @@ public function create() {
 
   //remove floor
  public function destroy(Floor $floor){
+
+     $rooms = Room::all();
+     $floors = Floor::all();
+     foreach($rooms as $room){
+         if($room->floor_number == $floor->floor_number){
+             if($room->is_reserved == 1){
     
-     $floor ->delete();
-     return redirect()->route('adminfloors.index')->with('success','Floor deleted successfully');
-                                              
+                return redirect()->route('adminfloors.index')->with('reserved', 'Floor has reserved rooms'); 
+
+             }
+             else {
+                $room  ->delete();
+                $floor ->delete();
+                return redirect()->route('adminfloors.index')->with('success','Floor deleted successfully');
+           
+              }
+                     
+         }        
+
+     }
+                                          
  }    
+
+ 
  
  
  public function destroymanager(Floor $floor){
     
-    $floor->delete();
-    return redirect()->route('managerfloors.indexmanager')->with('success','Floor deleted successfully');
+    $rooms = Room::all();
+    $floors = Floor::all();
+     foreach($rooms as $room){
+         if($room->floor_number == $floor->floor_number){
+             if($room->is_reserved == 1){
+                return redirect()->route('managerfloors.indexmanager')->with('reserved', 'Floor has reserved rooms'); 
+    
+             }
+          else{     
+                $room->delete();
+                $floor->delete();
+                return redirect()->route('managerfloors.indexmanager')->with('success','Floor deleted successfully');
+
+         
+        }
+     }
+     
+
+    }
+                    
+
+
                                              
 }                          
 

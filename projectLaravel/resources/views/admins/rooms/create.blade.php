@@ -332,7 +332,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                <label for="floor_number">Floor Number</label>
               <select name="floor_number" class="form-control" id="floor_number">
               @foreach ($floors as $floor)
-              <option value="{{$floor->id}}">{{$floor->floor_number}}</option>
+              <option value="{{$floor->floor_number}}">{{$floor->floor_number}}</option>
                @endforeach
                </select>
               </div>
