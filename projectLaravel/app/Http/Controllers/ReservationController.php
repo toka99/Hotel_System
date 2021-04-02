@@ -37,6 +37,7 @@ class ReservationController extends Controller
         }
 
     }
+
     
 
     public function index() {
@@ -48,6 +49,22 @@ class ReservationController extends Controller
     }
 
 
+    
+    public function indexmanager() {
+    
+      $allreservations = Reservation::all(); //object of elequont collection
+      return view('managers.clients.index3' , [
+          'reservations' =>  $allreservations
+       ] );
+  }
+
+  public function indexreceptionist() {
+    
+    $allreservations = Reservation::all(); //object of elequont collection
+    return view('receptionists.clients.index3' , [
+        'reservations' =>  $allreservations
+     ] );
+}
 
 
     public function show($reservationId) {

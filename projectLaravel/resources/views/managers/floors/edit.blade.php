@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin|Edit  Receptionist</title>
+  <title>Manager|Edit  Floor</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -164,7 +164,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admins" class="brand-link">
+    <a href="/managers" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Hotel System</span>
     </a>
@@ -177,7 +177,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admins" class="d-block">Admin Main Menu</a>
+          <a href="/managers" class="d-block">Manager Main Menu</a>
         </div>
       </div>
 
@@ -199,20 +199,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/adminrequestclients" class="nav-link active">
+                <a href="/managerrequestclients" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Clients Pending Requests</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/adminapproveclients" class="nav-link">
+                <a href="/managerapproveclients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Approved Clients</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="/adminreservationclients" class="nav-link">
+                <a href="/managerreservationclients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Clients Reservations</p>
                 </a>
@@ -220,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="/adminreceptionists" class="nav-link">
+            <a href="/managerreceptionists" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Receptionists
@@ -229,17 +229,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
 
-          <li class="nav-item">
-            <a href="/adminmanagers" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-              Manage Managers
-              </p>
-            </a>
-          </li>
 
           <li class="nav-item">
-            <a href="/adminfloors" class="nav-link">
+            <a href="/managerfloors" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Floors
@@ -248,7 +240,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="/adminrooms" class="nav-link">
+            <a href="/managerrooms" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Rooms
@@ -272,7 +264,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Receptionist</h1>
+            <h1 class="m-0">Edit Floor</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -294,7 +286,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
  
   <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Edit Receptionist Form</h3>
+                <h3 class="card-title">Edit Floor Form</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -309,61 +301,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
  </ul>
  </div>
  @endif
-              <form method="POST" action="{{route('adminreceptionists.update', ['receptionist' => $receptionist['id']])}}">
+              <form method="POST" action="{{route('managerfloors.updatemanager', ['floor' => $floor['id']])}}">
               @csrf
               @method('PUT')
                 <div class="card-body">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name" value="{{$receptionist['name']}}" name="name">
+                    <input type="text" class="form-control" id="name" placeholder="Enter floor name" value="{{$floor['name']}}" name="name">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{$receptionist['password']}}" name="password">
+                    <label for="exampleInputNumber">Number</label>
+                    <input type="text" class="form-control" id="exampleInputNumber" placeholder="Enter Floor Number" value="{{$floor['floor_number']}}" name="floor_number">
                   </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{$receptionist['email']}}" name="email">
-                  </div>
-                  <div class="form-group">
-                    <label for="nationalid">National_id</label>
-                    <input type="text" class="form-control" id="nationalid" placeholder="enter national_id" value="{{$receptionist['national_id']}}" name="national_id">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">Choose an image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile" value="{{$receptionist['image']}}" name="image">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                    <div class="form-group">
-                    <label for="nationalid">Created_at</label>
-                    <input type="date" class="form-control" id="date" placeholder="enter the date" value="{{$receptionist['created_at']}}" name="created_at">
-                  </div> 
-                  
-               
                  
-              <div class="form-group">
-              <label for="manager_name">Manager Name</label>
-              <select name="manager_name" class="form-control" id="manager_name">
-              @foreach ($managers as $manager)
-              <option value="{{$manager->name}}">{{$manager->name}}</option>
-               @endforeach
-               </select>
-              </div>
-                 
-
-
+                   
                   
                   <div class="form-group text-center">
 
-                  <button type="submit" class="btn btn-success">Update Receptionist</button>
+                  <button type="submit" class="btn btn-success">Update Floor</button>
 
                   </div>
 

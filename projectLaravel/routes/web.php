@@ -296,4 +296,3 @@ Route::get('/receptionistreservationclients', [ReservationController::class, 'in
 // Route::get('/managerreservationclients/{reservation}/edit', [ReservationController::class, 'editmanager'])->name('managerreservationclients.editmanager');//->middleware('auth'); 
 // Route::put('/managerreservationclients/{reservation}', [ReservationController::class, 'updatemanager'])->name('managerreservationclients.updatemanager');//->middleware('auth'); e::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update')->middleware('auth'); 
 // Route::delete('/managerreservationclients/{reservation}', [ReservationController::class, 'destroymanager'])->name('managerreservationclients.destroymanager');//->middleware('auth');                              
-Route::get('receptionistreservationclients/list', [ReservationController::class, 'getReservationsReceptionist'])->name('receptionistreservationclients.list'); //Data table

@@ -26,13 +26,13 @@ class Reservation extends Model
     ];
 
   //setting price into database in cents
-   public function setPriceAttribute($value)
+   public function setPaidPriceAttribute($value)
    {
        $this -> attributes['paid_price'] = $value * 100;
    }
 
  //getting price from database converted into dollars
-   public function getPriceAttribute($value)
+   public function getPaidPriceAttribute($value)
 
    { 
     return $this ->attributes['paid_price']  / 100;
