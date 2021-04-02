@@ -40,7 +40,9 @@ class RoomController extends Controller
 
         }
 
+
     }
+   
 
 
     public function getManagerRooms(Request $request)
