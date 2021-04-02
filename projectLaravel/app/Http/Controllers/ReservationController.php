@@ -60,6 +60,26 @@ class ReservationController extends Controller
     }
 
 
+    public function getReservationsReceptionist(Request $request)
+
+    {
+
+        //dd($request);
+
+        if ($request->ajax()) {
+
+            $data = Reservation::latest()->get();
+
+            return Datatables::of($data)
+
+                
+                ->make(true);
+
+        }
+
+    }
+
+
 
 
 
@@ -85,7 +105,13 @@ class ReservationController extends Controller
        ] );
   }
 
-
+  public function indexreceptionist() {
+    
+    $allreservations = Reservation::all(); //object of elequont collection
+    return view('receptionists.clients.index3' , [
+        'reservations' =>  $allreservations
+     ] );
+}
 
 
     public function show($reservationId) {

@@ -64,6 +64,29 @@ class ClientController extends Controller
 
     }
 
+    public function getPendingClientsReceptionist(Request $request)
+
+    {
+
+        if ($request->ajax()) {
+
+            $data = Client::latest()->where('status',0);
+
+            return Datatables::of($data)
+
+                ->addColumn('action', 'helper.actionButtonsReceptionistClients')
+
+                
+                ->rawColumns(['action'])
+
+                ->make(true);
+               
+
+        }
+
+    }
+
+
    public function getApprovedClients(Request $request)
 
    {
@@ -108,6 +131,24 @@ class ClientController extends Controller
 
    }
 
+   public function getApprovedClientsReceptionist(Request $request)
+
+   {
+
+       if ($request->ajax()) {
+
+           $data = Client::latest()->where('status',1);
+
+           return Datatables::of($data)
+
+
+               ->make(true);
+              
+
+       }
+
+   }
+
 
 
     public function clientapproval()
@@ -133,6 +174,14 @@ class ClientController extends Controller
          ] );
     }
 
+    public function indexreceptionist() {
+    
+        $allclients = Client::all(); //object of elequont collection
+        return view('receptionists.clients.index' , [
+            'clients' =>  $allclients
+         ] );
+    }
+
     public function index2() {
     
         $allclients = Client::all(); //object of elequont collection
@@ -150,7 +199,13 @@ class ClientController extends Controller
          ] );
     }
 
-
+    public function index2receptionist() {
+    
+        $allclients = Client::all(); //object of elequont collection
+        return view('receptionists.clients.index2' , [
+            'clients' =>  $allclients
+         ] );
+    }
 
 
 
@@ -176,8 +231,9 @@ public function create() {
     return view('managers.clients.create');
 
  }
+  
 
-
+ 
 
 
  
@@ -341,6 +397,26 @@ public function create() {
     $client->delete();
     return redirect()->route('managerrequestclients.indexmanager');//Redirect user somewhere
  }
+
+//////////////////////////////////////////////////////////
+
+
+
+public function approvereceptionist($client){
+    $client = Client::find($client) ;
+    $client->status = 1; //Approved
+    $client->save();
+    return redirect()->route('receptionistrequestclients.indexreceptionist'); //Redirect user somewhere
+ }
+ 
+ public function declinereceptionist($client){
+    $client = Client::find($client) ;
+    $client->status = 0; //Declined
+    $client->delete();
+    return redirect()->route('receptionistrequestclients.indexreceptionist');//Redirect user somewhere
+ }
+
+
 
 
 

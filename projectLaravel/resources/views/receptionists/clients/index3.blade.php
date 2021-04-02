@@ -8,7 +8,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>Admin| Receptionist index</title>
+  <title>Receptionist|Clients Reservations</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -168,7 +168,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/managers" class="brand-link">
+    <a href="/receptionists" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Hotel System</span>
     </a>
@@ -181,7 +181,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/managers" class="d-block">Manager Main Menu</a>
+          <a href="/receptionists" class="d-block">Receptionist Main Menu</a>
         </div>
       </div>
 
@@ -203,54 +203,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="/receptionistrequestclients" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Clients Pending Requests</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/receptionistapproveclients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Approved Clients</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/receptionistreservationclients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Clients Reservations</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="/managerreceptionists" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-              Manage Receptionists
-              </p>
-            </a>
-          </li>
-
-
-          <li class="nav-item">
-            <a href="/managerfloors" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-              Manage Floors
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="/managerrooms" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-              Manage Rooms
-              </p>
-            </a>
-          </li>
-
+         
 
 
         </ul>
@@ -267,16 +240,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Receptionists </h1>
+            <h1 class="m-0">Client Reservations</h1>
             <br>
 
-            
-            <a href="{{route('managerreceptionists.createmanager')}}"  type="button" class="btn btn-primary btn-sm">
-              
-                Create Receptionist
-            </a>
-           </form>
-              
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -312,13 +278,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Password</th>
-                <th>Email</th>
-                <th>National_id</th>
+                <th>Accompany</th>
+                <th>room_number</th>
                 <!-- <th>Image</th> -->
-                <th>Created_at</th>
-                <th>Manager Name</th>
-                <th>Actions</th>
+                <th>paid_price</th>
+              
                 
             </tr>
         </thead>
@@ -342,35 +306,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 <script type="text/javascript">
+
+
   $(function () {
     $.noConflict();
+  
     var table = $('.yajra-datatable').DataTable({
+      
         processing: true,
         serverSide: true,
-        ajax: "{{ route('managerreceptionists.list') }}",
+        ajax: "{{ route('receptionistreservationclients.list') }}",
         columns: [
+               
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
-            {data: 'password', name: 'password'},
-            {data: 'email', name: 'email'},
-            {data: 'national_id', name: 'national_id'},
-            {data: 'created_at', name: 'created_at'} ,   
-            {data: 'manager_name', name: 'manager_name'}, 
-            
-            {
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true
-            },
+            {data: 'accompany', name: 'accompany'},
+            {data: 'room_number', name: 'room_number'},   
+            {data: 'paid_price', name: 'paid_price'},
+          
+     
+
         ]
+      
     });
+    
     
   });
 
+  
+ 
+
 </script>
-
-
 
 
   <!-- to hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-->
