@@ -62,6 +62,26 @@ class ReceptionistController extends Controller
 
             return Datatables::of($data)
 
+
+                ->make(true);
+
+        }
+
+    }
+
+    
+    public function getManagerOwnReceptionists(Request $request)
+
+    {
+
+        //dd($request);
+
+        if ($request->ajax()) {
+
+            $data = Receptionist::latest()->where('manager_name','ouf');
+
+            return Datatables::of($data)
+
                 ->addColumn('action', 'helper.actionButtonsManagerReceptionists')
 
                 
@@ -74,11 +94,6 @@ class ReceptionistController extends Controller
     }
 
 
-
-
-
-
-    
 
     public function index() {
     
@@ -93,6 +108,15 @@ class ReceptionistController extends Controller
     
         $allreceptionists = Receptionist::all(); //object of elequont collection
         return view('managers.receptionists.index' , [
+            'receptionists' =>  $allreceptionists
+         ] );
+    }
+
+
+    public function indexmanagerownreceptionist() {
+    
+        $allreceptionists = Receptionist::all(); //object of elequont collection
+        return view('managers.receptionists.indexmanagerownreceptionists' , [
             'receptionists' =>  $allreceptionists
          ] );
     }

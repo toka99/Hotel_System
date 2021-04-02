@@ -199,34 +199,49 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="/managerrequestclients" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Clients Pending Requests</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/managerapproveclients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Approved Clients</p>
                 </a>
-              </li>
-
+              </li>  
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/managerreservationclients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Clients Reservations</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="/managerreceptionists" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+          
+
+
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-              Manage Receptionists
+               Manage Receptionist
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/managerreceptionists" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View All Receptionists</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/managerownreceptionists" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage My Receptionists</p>
+                </a>
+              </li>
 
 
           <li class="nav-item">

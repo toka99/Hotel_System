@@ -196,6 +196,9 @@ Route::put('/managerreceptionists/{receptionist}', [ReceptionistController::clas
 Route::delete('/managerreceptionists/{receptionist}', [ReceptionistController::class, 'destroymanager'])->name('managerreceptionists.destroymanager');//->middleware('auth');                              
 Route::get('managerreceptionists/list', [ReceptionistController::class, 'getManagerReceptionists'])->name('managerreceptionists.list'); //Data table
 
+Route::get('/managerownreceptionists', [ReceptionistController::class, 'indexmanagerownreceptionist'])->name('managerownreceptionists.indexmanagerownreceptionist');//->middleware('auth');
+Route::get('managerownreceptionists/list', [ReceptionistController::class, 'getManagerOwnReceptionists'])->name('managerownreceptionists.list'); //Data table
+
 
 
 // manager(rooms)
