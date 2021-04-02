@@ -164,7 +164,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admins" class="brand-link">
+    <a href="/managers" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Hotel System</span>
     </a>
@@ -177,7 +177,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admins" class="d-block">Admin Main Menu</a>
+          <a href="/managers" class="d-block">Manager Main Menu</a>
         </div>
       </div>
 
@@ -199,20 +199,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/adminrequestclients" class="nav-link active">
+                <a href="/managerrequestclients" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Clients Pending Requests</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/adminapproveclients" class="nav-link">
+                <a href="/managerapproveclients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Approved Clients</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="/adminreservationclients" class="nav-link">
+                <a href="/managerreservationclients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Clients Reservations</p>
                 </a>
@@ -220,7 +220,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="/adminreceptionists" class="nav-link">
+            <a href="/managerreceptionists" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Receptionists
@@ -229,17 +229,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
 
-          <li class="nav-item">
-            <a href="/adminmanagers" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-              Manage Managers
-              </p>
-            </a>
-          </li>
 
           <li class="nav-item">
-            <a href="/adminfloors" class="nav-link">
+            <a href="/managerfloors" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Floors
@@ -248,7 +240,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="/adminrooms" class="nav-link">
+            <a href="/managerrooms" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Rooms
@@ -309,7 +301,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
  </ul>
  </div>
  @endif
-              <form method="POST" action="{{route('adminreceptionists.update', ['receptionist' => $receptionist['id']])}}">
+              <form method="POST" action="{{route('managerreceptionists.updatemanager', ['receptionist' => $receptionist['id']])}}">
               @csrf
               @method('PUT')
                 <div class="card-body">

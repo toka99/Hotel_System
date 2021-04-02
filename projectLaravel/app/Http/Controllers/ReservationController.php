@@ -39,6 +39,29 @@ class ReservationController extends Controller
     }
 
 
+    
+    public function getReservationsManager(Request $request)
+
+    {
+
+        //dd($request);
+
+        if ($request->ajax()) {
+
+            $data = Reservation::latest()->get();
+
+            return Datatables::of($data)
+
+                
+                ->make(true);
+
+        }
+
+    }
+
+
+
+
 
 
 
@@ -51,6 +74,16 @@ class ReservationController extends Controller
             'reservations' =>  $allreservations
          ] );
     }
+
+
+    
+    public function indexmanager() {
+    
+      $allreservations = Reservation::all(); //object of elequont collection
+      return view('managers.clients.index3' , [
+          'reservations' =>  $allreservations
+       ] );
+  }
 
 
 

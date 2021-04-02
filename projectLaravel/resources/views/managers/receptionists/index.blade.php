@@ -7,7 +7,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin|Edit  Receptionist</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>Admin| Receptionist index</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,7 +18,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> -->
   <!-- Theme style -->
   <!-- <link rel="stylesheet" href="dist/css/adminlte.min.css"> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -164,7 +168,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/admins" class="brand-link">
+    <a href="/managers" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Hotel System</span>
     </a>
@@ -177,7 +181,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/admins" class="d-block">Admin Main Menu</a>
+          <a href="/managers" class="d-block">Manager Main Menu</a>
         </div>
       </div>
 
@@ -199,20 +203,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/adminrequestclients" class="nav-link active">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Clients Pending Requests</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/adminapproveclients" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Approved Clients</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="/adminreservationclients" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Clients Reservations</p>
                 </a>
@@ -220,7 +224,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </ul>
           </li>
           <li class="nav-item">
-            <a href="/adminreceptionists" class="nav-link">
+            <a href="/managerreceptionists" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Receptionists
@@ -230,16 +234,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
           <li class="nav-item">
-            <a href="/adminmanagers" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-              Manage Managers
-              </p>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a href="/adminfloors" class="nav-link">
+            <a href="/managerfloors" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Floors
@@ -248,7 +243,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
           <li class="nav-item">
-            <a href="/adminrooms" class="nav-link">
+            <a href="receptionist.manager.name" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
               Manage Rooms
@@ -272,7 +267,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Edit Receptionist</h1>
+            <h1 class="m-0">Manage Receptionists </h1>
+            <br>
+
+            
+            <a href="{{route('managerreceptionists.createmanager')}}"  type="button" class="btn btn-primary btn-sm">
+              
+                Create Receptionist
+            </a>
+           </form>
+              
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -291,88 +295,89 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <p>Sidebar content</p>
     </div>
   </aside>
- 
-  <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Edit Receptionist Form</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <div class="container">
-              
-              @if ($errors->any())
-<div class="alert alert-danger">
-<ul>
- @foreach($errors->all() as $error)
- <li>{{$error}}</li>
- @endforeach
- </ul>
- </div>
- @endif
-              <form method="POST" action="{{route('adminreceptionists.update', ['receptionist' => $receptionist['id']])}}">
-              @csrf
-              @method('PUT')
-                <div class="card-body">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name" value="{{$receptionist['name']}}" name="name">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{$receptionist['password']}}" name="password">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" value="{{$receptionist['email']}}" name="email">
-                  </div>
-                  <div class="form-group">
-                    <label for="nationalid">National_id</label>
-                    <input type="text" class="form-control" id="nationalid" placeholder="enter national_id" value="{{$receptionist['national_id']}}" name="national_id">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputFile">Choose an image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile" value="{{$receptionist['image']}}" name="image">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                    <div class="form-group">
-                    <label for="nationalid">Created_at</label>
-                    <input type="date" class="form-control" id="date" placeholder="enter the date" value="{{$receptionist['created_at']}}" name="created_at">
-                  </div> 
-                  
-               
-                 
-              <div class="form-group">
-              <label for="manager_name">Manager Name</label>
-              <select name="manager_name" class="form-control" id="manager_name">
-              @foreach ($managers as $manager)
-              <option value="{{$manager->name}}">{{$manager->name}}</option>
-               @endforeach
-               </select>
-              </div>
-                 
 
 
-                  
-                  <div class="form-group text-center">
 
-                  <button type="submit" class="btn btn-success">Update Receptionist</button>
 
-                  </div>
+  <!-- from hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee -->
 
-                  
-                 
-</form>
+
+
+<div class="box">
+    
+    <!-- /.box-header -->
+    <div class="box-body">
+    <table class="table table-bordered yajra-datatable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>National_id</th>
+                <!-- <th>Image</th> -->
+                <th>Created_at</th>
+                <th>Manager Name</th>
+                <th>Actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </div>
+
+     
+  
+                
+            
+         
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+<script type="text/javascript">
+  $(function () {
+    $.noConflict();
+    var table = $('.yajra-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('managerreceptionists.list') }}",
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'name', name: 'name'},
+            {data: 'password', name: 'password'},
+            {data: 'email', name: 'email'},
+            {data: 'national_id', name: 'national_id'},
+            {data: 'created_at', name: 'created_at'} ,   
+            {data: 'manager_name', name: 'manager_name'}, 
+            
+            {
+                data: 'action', 
+                name: 'action', 
+                orderable: true, 
+                searchable: true
+            },
+        ]
+    });
+    
+  });
+
+</script>
+
+
+
+
+  <!-- to hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-->
+ 
+
 <!-- jQuery -->
-<!-- <script src="plugins/jquery/jquery.min.js"></script> -->
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

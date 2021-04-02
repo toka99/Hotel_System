@@ -42,7 +42,28 @@ class ClientController extends Controller
 
     }
 
-    
+    public function getPendingClientsManager(Request $request)
+
+    {
+
+        if ($request->ajax()) {
+
+            $data = Client::latest()->where('status',0);
+
+            return Datatables::of($data)
+
+                ->addColumn('action', 'helper.actionButtonsManagerClients')
+
+                
+                ->rawColumns(['action'])
+
+                ->make(true);
+               
+
+        }
+
+    }
+
    public function getApprovedClients(Request $request)
 
    {
@@ -54,6 +75,28 @@ class ClientController extends Controller
            return Datatables::of($data)
 
                ->addColumn('action', 'helper.actionButtonsAdminApprovedClients')
+
+               
+               ->rawColumns(['action'])
+
+               ->make(true);
+              
+
+       }
+
+   }
+
+   public function getApprovedClientsManager(Request $request)
+
+   {
+
+       if ($request->ajax()) {
+
+           $data = Client::latest()->where('status',1);
+
+           return Datatables::of($data)
+
+               ->addColumn('action', 'helper.actionButtonsManagerApprovedClients')
 
                
                ->rawColumns(['action'])
@@ -82,6 +125,14 @@ class ClientController extends Controller
          ] );
     }
 
+    public function indexmanager() {
+    
+        $allclients = Client::all(); //object of elequont collection
+        return view('managers.clients.index' , [
+            'clients' =>  $allclients
+         ] );
+    }
+
     public function index2() {
     
         $allclients = Client::all(); //object of elequont collection
@@ -90,13 +141,16 @@ class ClientController extends Controller
          ] );
     }
 
-    public function index3() {
+
+    public function index2manager() {
     
-        // $allreservations = Reservation::all(); //object of elequont collection
-        // return view('admins.clients.index3' , [
-        //     'reservations' =>  $allreservations
-        //  ] );
+        $allclients = Client::all(); //object of elequont collection
+        return view('managers.clients.index2' , [
+            'clients' =>  $allclients
+         ] );
     }
+
+
 
 
 
@@ -118,29 +172,54 @@ public function create() {
 
  }
 
+ public function createmanager() {
+    return view('managers.clients.create');
+
+ }
+
 
 
 
  
  public function store(Request $request){
 
-    // $request->validate([
+    $request->validate([
 
         
-    //         'name'              => 'required',
-    //         'email'             => 'required|email|unique:clients,email',
-    //         'password'          => 'required|min:8',
-    //         'national_id'       => 'required|min:14|unique:clients,national_id',
-    //         'created_at'        => 'required',
-    //         'image'             => 'required',   
+            'name'              => 'required',
+            'email'             => 'required|email|unique:clients,email',
+            'password'          => 'required|min:8',
+            'image'             => 'required',  
+            'gender'            => 'required',
 
 
-
-    // ]);
+    ]);
     $requestData = $request->all();
     Client::create($requestData);
 
     return redirect()->route('adminrequestclients.index');
+   
+
+ }
+
+ 
+ public function storemanager(Request $request){
+
+    $request->validate([
+
+        
+            'name'              => 'required',
+            'email'             => 'required|email|unique:clients,email',
+            'password'          => 'required|min:8',
+            'image'             => 'required',  
+            'gender'            => 'required',
+
+
+    ]);
+    $requestData = $request->all();
+    Client::create($requestData);
+
+    return redirect()->route('managerrequestclients.indexmanager');
    
 
  }
@@ -156,28 +235,57 @@ public function create() {
  
     }
 
+    public function editmanager($client){
 
+        $client = Client::find($client) ;
+        return view('managers.clients.edit',['client'=>$client]);
+     
+        }
+    
    
 
 
  public function update(Request $request, Client $client){
 
-    // $request->validate([
+    $request->validate([
 
     
-    //     'name'              => 'required',
-    //     'email'             => 'required|email|unique:managers,email,'.$manager->id,
-    //     'password'          => 'required|min:8',
-    //     'national_id'       => 'required|min:14|unique:managers,national_id,'.$manager->id,
-    //     'created_at'        => 'required',
-    //     'image'             => 'required',   
+        'name'              => 'required',
+        'email'             => 'required|email|unique:clients,email,'.$client->id,
+        'gender'            => 'required',
+        'image'             => 'required',  
+        
+   
 
-    // ]);
+    ]);
 
 
     $client->update($request->all());
 
     return redirect()->route('adminapproveclients.index2') ->with('success','clients updated successfully');
+    
+ }
+
+
+ 
+ public function updatemanager(Request $request, Client $client){
+
+    $request->validate([
+
+    
+        'name'              => 'required',
+        'email'             => 'required|email|unique:clients,email,'.$client->id,
+        'gender'            => 'required',
+        'image'             => 'required',  
+        
+   
+
+    ]);
+
+
+    $client->update($request->all());
+
+    return redirect()->route('managerapproveclients.index2manager') ->with('success','clients updated successfully');
     
  }
 
@@ -192,7 +300,15 @@ public function create() {
      $client->delete();
      return redirect()->route('adminapproveclients.index2')->with('success','clients deleted successfully');
                                               
- }   
+ }  
+ 
+ public function destroymanager(Client $client){
+    
+    $client->delete();
+    return redirect()->route('managerapproveclients.index2manager')->with('success','clients deleted successfully');
+                                             
+}   
+
  
  
 
@@ -208,6 +324,22 @@ public function create() {
     $client->status = 0; //Declined
     $client->delete();
     return redirect()->route('adminrequestclients.index');//Redirect user somewhere
+ }
+
+////////////////////////////////////////////////////////
+
+ public function approvemanager($client){
+    $client = Client::find($client) ;
+    $client->status = 1; //Approved
+    $client->save();
+    return redirect()->route('managerrequestclients.indexmanager'); //Redirect user somewhere
+ }
+ 
+ public function declinemanager($client){
+    $client = Client::find($client) ;
+    $client->status = 0; //Declined
+    $client->delete();
+    return redirect()->route('managerrequestclients.indexmanager');//Redirect user somewhere
  }
 
 

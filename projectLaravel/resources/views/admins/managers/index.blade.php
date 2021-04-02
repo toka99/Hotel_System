@@ -203,20 +203,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="/adminrequestclients" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Clients Pending Requests</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/adminapproveclients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Approved Clients</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/adminreservationclients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Clients Reservations</p>
                 </a>
