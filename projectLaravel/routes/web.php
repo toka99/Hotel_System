@@ -92,28 +92,21 @@ Route::post('/register/admin', [App\Http\Controllers\Auth\RegisterController::cl
 
 
  //receptionist
- Route::get('/login/receptionist', [App\Http\Controllers\Auth\LoginController::class,'showReceptionistLoginForm'])->name('login.receptionist');  
- Route::get('/register/receptionist', [App\Http\Controllers\Auth\RegisterController::class,'showReceptionistRegisterForm'])->name('register.receptionist');
+Route::get('/login/receptionist', [App\Http\Controllers\Auth\LoginController::class,'showReceptionistLoginForm'])->name('login.receptionist');  
+Route::get('/register/receptionist', [App\Http\Controllers\Auth\RegisterController::class,'showReceptionistRegisterForm'])->name('register.receptionist');
 
     
- Route::post('/login/receptionist',[App\Http\Controllers\Auth\LoginController::class,'receptionistLogin']);
+Route::post('/login/receptionist',[App\Http\Controllers\Auth\LoginController::class,'receptionistLogin']);
 Route::post('/register/receptionist', [App\Http\Controllers\Auth\RegisterController::class,'createReceptionist']);
  //client  Client
 
- Route::get('/login/client', [App\Http\Controllers\Auth\LoginController::class,'showClientLoginForm'])->name('login.client');
- Route::get('/register/client', [App\Http\Controllers\Auth\RegisterController::class,'showClientRegisterForm'])->name('register.client');
- Route::post('/login/client',[App\Http\Controllers\Auth\LoginController::class,'clientLogin']);
+Route::get('/login/client', [App\Http\Controllers\Auth\LoginController::class,'showClientLoginForm'])->name('login.client');
+Route::get('/register/client', [App\Http\Controllers\Auth\RegisterController::class,'showClientRegisterForm'])->name('register.client');
+Route::post('/login/client',[App\Http\Controllers\Auth\LoginController::class,'clientLogin']);
 Route::post('/register/client', [App\Http\Controllers\Auth\RegisterController::class,'createClient']);
 
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
-
-
-
-
 
 
 //admin role
@@ -149,7 +142,6 @@ Route::get('adminmanagers/list', [ManagerController::class, 'getManagers'])->nam
 
 
 // admin(rooms)
-
 Route::get('/adminrooms', [RoomController::class, 'index'])->name('adminrooms.index');//->middleware('auth');        
 Route::get('/adminrooms/create', [RoomController::class, 'create'])->name('adminrooms.create');//->middleware('auth');  
 Route::post('/adminrooms', [RoomController::class, 'store'])->name('adminrooms.store');//->middleware('auth');
@@ -161,7 +153,6 @@ Route::get('adminrooms/list', [RoomController::class, 'getRooms'])->name('adminr
 
 
 //admin(floors)
-
 Route::get('/adminfloors', [FloorController::class, 'index'])->name('adminfloors.index');//->middleware('auth');        
 Route::get('/adminfloors/create', [FloorController::class, 'create'])->name('adminfloors.create');//->middleware('auth');  
 Route::post('/adminfloors', [FloorController::class, 'store'])->name('adminfloors.store');//->middleware('auth');
@@ -222,6 +213,9 @@ Route::put('/managerreceptionists/{receptionist}', [ReceptionistController::clas
 Route::delete('/managerreceptionists/{receptionist}', [ReceptionistController::class, 'destroymanager'])->name('managerreceptionists.destroymanager');//->middleware('auth');                              
 Route::get('managerreceptionists/list', [ReceptionistController::class, 'getManagerReceptionists'])->name('managerreceptionists.list'); //Data table
 
+Route::get('/managerownreceptionists', [ReceptionistController::class, 'indexmanagerownreceptionist'])->name('managerownreceptionists.indexmanagerownreceptionist');//->middleware('auth');
+Route::get('managerownreceptionists/list', [ReceptionistController::class, 'getManagerOwnReceptionists'])->name('managerownreceptionists.list'); //Data table
+
 
 
 // manager(rooms)
@@ -235,6 +229,10 @@ Route::delete('/managerrooms/{room}', [RoomController::class, 'destroymanager'])
 Route::get('managerrooms/list', [RoomController::class, 'getManagerRooms'])->name('managerrooms.list'); //Data table
 
 
+Route::get('/managerownrooms', [RoomController::class, 'indexmanagerownroom'])->name('managerownrooms.indexmanagerownrooms');//->middleware('auth');
+Route::get('managerownrooms/list', [RoomController::class, 'getManagerOwnRooms'])->name('managerownrooms.list'); //Data table
+
+
 
 // manager(floors)
 
@@ -246,6 +244,8 @@ Route::put('/managerfloors/{floor}', [FloorController::class, 'updatemanager'])-
 Route::delete('/managerfloors/{floor}', [FloorController::class, 'destroymanager'])->name('managerfloors.destroymanager');//->middleware('auth');                              
 Route::get('managerfloors/list', [FloorController::class, 'getManagerFloors'])->name('managerfloors.list'); //Data table
 
+Route::get('/managerownfloors', [FloorController::class, 'indexmanagerownfloor'])->name('managerownfloors.indexmanagerownfloors');//->middleware('auth');
+Route::get('managerownfloors/list', [FloorController::class, 'getManagerOwnFloors'])->name('managerownfloors.list'); //Data table
 
 
 //manager(requestclient)

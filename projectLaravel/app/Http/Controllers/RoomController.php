@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Room;
 
 use App\Models\Floor;
+use App\Models\Manager;
 
 use App\Models\User;
 
@@ -23,7 +24,6 @@ class RoomController extends Controller
 
     {
 
-        //dd($request);
 
         if ($request->ajax()) {
 
@@ -49,11 +49,30 @@ class RoomController extends Controller
 
     {
 
-        //dd($request);
+       
 
         if ($request->ajax()) {
 
             $data = Room::latest()->get();
+
+            return Datatables::of($data)
+
+                ->make(true);
+
+        }
+
+    }
+
+
+    public function getManagerOwnRooms(Request $request)
+
+    {
+
+        
+
+        if ($request->ajax()) {
+
+            $data = Room::latest()->where('manager_name','ouf');
 
             return Datatables::of($data)
 
@@ -110,6 +129,15 @@ class RoomController extends Controller
     }
 
 
+    public function indexmanagerownroom() {
+    
+        $allrooms = Room::all(); //object of elequont collection
+        return view('managers.rooms.indexmanagerownrooms' , [
+            'rooms' =>  $allrooms
+         ] );
+    }
+
+
 
 
     public function show($roomId) {
@@ -119,8 +147,7 @@ class RoomController extends Controller
 
 
 
-      // 'users' => User::all()     this related to the create el part bta3 el loop of el drop down list mmkn ybwa managers hna
-
+      
  public function create() {
     return view('admins.rooms.create',[
         'floors' => Floor::all()
@@ -200,8 +227,9 @@ class RoomController extends Controller
 
 
     public function editmanager(Room $room){
+        $managers = Manager::all();
         $floors = Floor::all();
-        return view('managers.rooms.edit', compact('room', 'floors'));
+        return view('managers.rooms.edit', compact('room', 'floors','managers'));
     }
 
    
@@ -273,7 +301,7 @@ class RoomController extends Controller
         return redirect()->route('managerrooms.indexmanager')->with('success','Room deleted successfully');
     } else {
             
-        return redirect()->route('adminrooms.index')->with('reserved', 'Room reserved'); 
+        return redirect()->route('managerrooms.indexmanager')->with('reserved', 'Room reserved'); 
     
     
     }                                         

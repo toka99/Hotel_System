@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Manager;
 use App\Models\User;
 
-//use App\Http\Controllers\Requests\StoreManagerRequest; 
-
-
- 
 
 
 use DataTables;
@@ -26,8 +22,7 @@ class ManagerController extends Controller
 
     {
 
-        //dd($request);
-
+        
         if ($request->ajax()) {
 
             $data = Manager::latest()->get();
@@ -72,7 +67,7 @@ class ManagerController extends Controller
 
 
 
-      // 'users' => User::all()     this related to the create el part bta3 el loop of el drop down list mmkn ybwa managers hna
+      
 public function create() {
     return view('admins.managers.create');
 
@@ -97,8 +92,7 @@ public function create() {
 
 
     ]);
-    // $requestData = $request->all();
-    // Manager::create($requestData);
+    
     $manager = Manager::create([
         'name' => $request['name'],
         'email' => $request['email'],

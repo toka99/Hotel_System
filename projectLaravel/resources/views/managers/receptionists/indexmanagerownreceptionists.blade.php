@@ -7,7 +7,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Maanger| Create Floor</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <title>Admin| Receptionist index</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -17,7 +18,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css"> -->
   <!-- Theme style -->
   <!-- <link rel="stylesheet" href="dist/css/adminlte.min.css"> -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.1/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"/>
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -199,20 +203,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/managerrequestclients" class="nav-link active">
+                <a href="#" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Manage Clients Pending Requests</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/managerapproveclients" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Approved Clients</p>
                 </a>
               </li>
 
               <li class="nav-item">
-                <a href="/managerreservationclients" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Clients Reservations</p>
                 </a>
@@ -227,32 +231,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </p>
             </a>
           </li>
-         
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+
+
+          <li class="nav-item">
+            <a href="/managerfloors" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
               <p>
-               Manage Floor
-                <i class="right fas fa-angle-left"></i>
+              Manage Floors
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/managerfloors" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>View All Floors</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="/managerownfloors" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Manage My Own Floors</p>
-                </a>
-              </li>
-
-
-
-          
+          </li>
 
           <li class="nav-item">
             <a href="/managerrooms" class="nav-link">
@@ -279,7 +267,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Create Floor</h1>
+            <h1 class="m-0">Manage Own Receptionists </h1>
+            <br>
+
+            
+            <a href="{{route('managerreceptionists.createmanager')}}"  type="button" class="btn btn-primary btn-sm">
+              
+                Create Receptionist
+            </a>
+           </form>
+              
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -300,59 +297,87 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
 
 
-  <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Create Floor Form</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <div class="container">
-
-              @if ($errors->any())
-              <div class="alert alert-danger">
-              <ul>
-              @foreach($errors->all() as $error)
-              <li>{{$error}}</li>
-              @endforeach
-              </ul>
-              </div>
-              @endif
 
 
-              
-              <form method="POST" action="{{route('managerfloors.storemanager')}}">
-              @csrf
-                <div class="card-body">
-                <div class="form-group">
-                    <label for="number">Number</label>
-                    <input type="text" class="form-control" id="number" placeholder="Enter Floor number" name="floor_number">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputName">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name of the floor" name="name">
-                  </div>
-                  <div class="form-group">
-                      <label for="manager_name">Manager Name</label>
-                      <select name="manager_name" class="form-control" id="manager_name">
-                      @foreach ($managers as $manager)
-                      <option value="{{$manager->name}}">{{$manager->name}}</option>
-                      @endforeach
-               </select>
-               </div>
-                  <div class="form-group text-center">
-                    
-          
-              <div class="form-group text-center">
+  <!-- from hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee -->
 
-                  <button type="submit" class="btn btn-success">create</button>
 
-                  </div>
- 
-              </form>
-              </div>
+
+<div class="box">
+    
+    <!-- /.box-header -->
+    <div class="box-body">
+    <table class="table table-bordered yajra-datatable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>National_id</th>
+                <!-- <th>Image</th> -->
+                <th>Created_at</th>
+                <th>Manager Name</th>
+                <th>Actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+     
   
+                
+            
+         
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+<script type="text/javascript">
+  $(function () {
+    $.noConflict();
+    var table = $('.yajra-datatable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('managerownreceptionists.list') }}",
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'name', name: 'name'},
+            {data: 'password', name: 'password'},
+            {data: 'email', name: 'email'},
+            {data: 'national_id', name: 'national_id'},
+            {data: 'created_at', name: 'created_at'} ,   
+            {data: 'manager_name', name: 'manager_name'}, 
+            
+            {
+                data: 'action', 
+                name: 'action', 
+                orderable: true, 
+                searchable: true
+            },
+        ]
+    });
+    
+  });
+
+</script>
+
+
+
+
+  <!-- to hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-->
+ 
+
 <!-- jQuery -->
-<!-- <script src="plugins/jquery/jquery.min.js"></script> -->
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

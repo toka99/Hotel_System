@@ -323,8 +323,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <div class="form-group">
                     <label for="exampleInputName">Name</label>
                     <input type="text" class="form-control" id="name" placeholder="Enter name of the floor" name="name">
+
                   </div>
                   
+
+                        
+
+
+
+
+
                   <div class="form-group text-center">
 
                   <button type="submit" class="btn btn-success">create</button>

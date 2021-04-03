@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRoomsTable extends Migration
+class CreateFloorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,18 @@ class CreateRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('floors', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('number'); 
-            $table->unsignedInteger('capacity');
-            $table->unsignedInteger('price');
+            $table->string('name');
             $table->unsignedInteger('floor_number');
-            $table->boolean('is_reserved')->default(0);
+            $table->string('manager_name')->default('admin');
             $table->timestamps();
+
         });
+
+
+
+
     }
 
     

@@ -267,15 +267,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Manage Receptionists </h1>
+            <h1 class="m-0">View Receptionists </h1>
             <br>
 
-            
-            <a href="{{route('managerreceptionists.createmanager')}}"  type="button" class="btn btn-primary btn-sm">
-              
-                Create Receptionist
-            </a>
-           </form>
               
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -318,7 +312,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <!-- <th>Image</th> -->
                 <th>Created_at</th>
                 <th>Manager Name</th>
-                <th>Actions</th>
+      
                 
             </tr>
         </thead>
@@ -356,13 +350,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             {data: 'national_id', name: 'national_id'},
             {data: 'created_at', name: 'created_at'} ,   
             {data: 'manager_name', name: 'manager_name'}, 
-            
-            {
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true
-            },
+
         ]
     });
     

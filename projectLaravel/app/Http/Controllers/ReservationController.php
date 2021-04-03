@@ -23,7 +23,7 @@ class ReservationController extends Controller
 
     {
 
-        //dd($request);
+        
 
         if ($request->ajax()) {
 
@@ -108,12 +108,9 @@ class ReservationController extends Controller
 
 
 
-      // 'users' => User::all()     this related to the create el part bta3 el loop of el drop down list mmkn ybwa managers hna
-
+      
  public function create() {
-    // return view('admins.clients.create',[
-    //     'reservations' => Reservation::all()
-    // ]);
+    
 
     }
 
@@ -123,20 +120,7 @@ class ReservationController extends Controller
  
  public function store(Request $request){
 
-    // $request->validate([
-
-    //     'number'             => 'required|min:4|integer|unique:rooms,number',
-    //     'capacity'           => 'required|integer',
-    //     'price'              => 'required',
-    //     'floor_number'       => 'required',
-        
-         
-
-    // // ]);
-    // $requestData = $request->all();
-    // Reservation::create($requestData);
-
-    // return redirect()->route('adminrooms.index');
+    
    
 
  }
@@ -144,18 +128,11 @@ class ReservationController extends Controller
  
 
 
- //'users'=>User::all()  related to edit fun. d bta3t l drop down list bta3t l post creator mmkn n3mlha ll mangers w gwa l []
-//  public function edit($reservation){
 
-//     // $reservation = Reservation::find($reservation) ;
-//     // return view('admins.reservations.edit',['reservation'=>$reservation, 'reservations'=>Reservation::all()]);
- 
-//     }
 
     public function edit(Reservation $reservation)
     {
-        // $reservations = Reservation::all();
-        // return view('admins.reservations.edit', compact('reservation', 'reservations'));
+        
     }
 
    
@@ -163,20 +140,10 @@ class ReservationController extends Controller
 
  public function update(Request $request, reservation $reservation){
 
-    // $request->validate([
-
-    
-    //     'number'             => 'required|min:4|integer|unique:rooms,number,'.$room->id,
-    //     'capacity'           => 'required|integer',
-    //     'price'              => 'required',
-        
-        
-    // ]);
-
+   
 
     $reservation->update($request->all());
 
-    // return redirect()->route('adminreservations.index') ->with('success','Reservation updated successfully');
     
  }
 
@@ -187,9 +154,7 @@ class ReservationController extends Controller
   //remove room
  public function destroy(Reservation $reservation){
     
-    //  $reservation->delete();
-    //  return redirect()->route('adminreservations.index')->with('success','Reservation deleted successfully');
-                                              
+                                           
  }                          
 
 

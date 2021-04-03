@@ -328,6 +328,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                </select>
               </div>
 
+
+
+
+
+              <div class="form-group">
+              <label for="manager_name">Manager Name</label>
+              <select name="manager_name" class="form-control" id="manager_name">
+              @foreach ($managers as $manager)
+              <option value="{{$manager->name}}">{{$manager->name}}</option>
+               @endforeach
+               </select>
+              </div>
+              <div class="form-group text-center">
+
+
+
                   <div class="form-group text-center">
 
                   <button type="submit" class="btn btn-success">create</button>

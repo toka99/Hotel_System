@@ -233,6 +233,29 @@ public function create() {
  }
   
 
+  
+ public function store(Request $request){
+
+    $request->validate([
+
+        
+            'name'              => 'required',
+            'email'             => 'required|email|unique:clients,email',
+            'password'          => 'required|min:8',
+            'image'             => 'required',  
+            'gender'            => 'required',
+
+
+    ]);
+    $requestData = $request->all();
+    Client::create($requestData);
+
+    return redirect()->route('adminrequestclients.index');
+   
+
+ }
+
+
  
 
 
