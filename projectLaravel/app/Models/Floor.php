@@ -15,6 +15,7 @@ class Floor extends Model
 
         'name',
         'floor_number',
+        'manager_name',
        
         
     ];
@@ -22,5 +23,10 @@ class Floor extends Model
     protected $hidden = [
         'remember_token'
     ];
+
+    public function manager() //foreign key 
+    {
+        return $this->belongsTo(Manager::class);
+    }
 
 }

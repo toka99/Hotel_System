@@ -228,16 +228,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
           </li>
 
-
-
-          <li class="nav-item">
-            <a href="/managerfloors" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-              Manage Floors
+               Manage Floor
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/managerfloors" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View All Floors</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/managerownfloors" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage My Own Floors</p>
+                </a>
+              </li>
+
+
 
           <li class="nav-item">
             <a href="/managerrooms" class="nav-link">
@@ -313,6 +326,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <label for="exampleInputNumber">Number</label>
                     <input type="text" class="form-control" id="exampleInputNumber" placeholder="Enter Floor Number" value="{{$floor['floor_number']}}" name="floor_number">
                   </div>
+                  <div class="form-group">
+                      <label for="manager_name">Manager Name</label>
+                      <select name="manager_name" class="form-control" id="manager_name">
+                      @foreach ($managers as $manager)
+                      <option value="{{$manager->name}}">{{$manager->name}}</option>
+                      @endforeach
+               </select>
+               </div>
                  
                    
                   

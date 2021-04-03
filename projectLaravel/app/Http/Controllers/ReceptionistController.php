@@ -134,10 +134,6 @@ class ReceptionistController extends Controller
     }
 
 
-
-      // 'users' => User::all()     this related to the create el part bta3 el loop of el drop down list mmkn ybwa managers hna
-
-
  public function create() {
     return view('admins.receptionists.create',[
         'managers' => Manager::all()
@@ -165,14 +161,13 @@ class ReceptionistController extends Controller
             'password'          => 'required|min:8',
             'national_id'       => 'required|min:14|unique:receptionists,national_id',
             'manager_name'      => 'required',
-            // 'created_at'        => 'required',
+             'created_at'        => 'required',
              'image'             => 'required',   
 
 
 
     ]);
-    // $requestData = $request->all();
-    // Receptionist::create($requestData);
+    
     $receptionist = Receptionist::create([
         'name' => $request['name'],
         'email' => $request['email'],
@@ -199,7 +194,7 @@ class ReceptionistController extends Controller
             'password'          => 'required|min:8',
             'national_id'       => 'required|min:14|unique:receptionists,national_id',
             'manager_name'      => 'required',
-            // 'created_at'        => 'required',
+             'created_at'        => 'required',
              'image'             => 'required',   
 
 
@@ -215,9 +210,6 @@ class ReceptionistController extends Controller
 
 
  
-
-
- //'users'=>User::all()  related to edit fun. d bta3t l drop down list bta3t l post creator mmkn n3mlha ll mangers w gwa l []
 
 
     public function edit(Receptionist $receptionist){
@@ -243,7 +235,7 @@ class ReceptionistController extends Controller
         'password'          => 'required|min:8',
         'national_id'       => 'required|min:14|unique:receptionists,national_id,'.$receptionist->id,
         'manager_name'      => 'required',
-        // 'created_at'        => 'required',
+         'created_at'        => 'required',
         'image'             => 'required',   
 
     ]);
@@ -266,7 +258,7 @@ class ReceptionistController extends Controller
         'password'          => 'required|min:8',
         'national_id'       => 'required|min:14|unique:receptionists,national_id,'.$receptionist->id,
         'manager_name'      => 'required',
-        // 'created_at'        => 'required',
+         'created_at'        => 'required',
         'image'             => 'required',   
 
     ]);

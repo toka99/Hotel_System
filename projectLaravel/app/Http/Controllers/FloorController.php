@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Floor;
 use App\Models\Room;
+use App\Models\Manager;
 
 use App\Models\User;
 
@@ -22,7 +23,7 @@ class FloorController extends Controller
 
     {
 
-        //dd($request);
+        
 
         if ($request->ajax()) {
 
@@ -46,11 +47,30 @@ class FloorController extends Controller
 
     {
 
-        //dd($request);
+        
 
         if ($request->ajax()) {
 
             $data = Floor::latest()->get();
+
+            return Datatables::of($data)
+
+
+                ->make(true);
+
+        }
+
+    }
+
+    public function getManagerOwnFloors(Request $request)
+
+    {
+
+        
+
+        if ($request->ajax()) {
+
+            $data = Floor::latest()->where('manager_name','ouf');
 
             return Datatables::of($data)
 
@@ -64,6 +84,7 @@ class FloorController extends Controller
         }
 
     }
+
 
 
 
@@ -87,18 +108,25 @@ class FloorController extends Controller
             'floors' =>  $allfloors
          ] );
     }
-
+    
+    public function indexmanagerownfloor() {
+    
+        $allfloors = Floor::all(); //object of elequont collection
+        return view('managers.floors.indexmanagerownfloors' , [
+            'floors' =>  $allfloors
+         ] );
+    }
 
 
 
     public function show($floorId) {
- //
+ 
     
     }
 
 
 
-      // 'users' => User::all()     this related to the create el part bta3 el loop of el drop down list mmkn ybwa managers hna
+     
 public function create() {
  
     return view('admins.floors.create');
@@ -108,7 +136,8 @@ public function create() {
 
      
  public function createmanager() {
-    return view('managers.floors.create');
+    $managers = Manager::all();
+    return view('managers.floors.create', compact('managers'));
 
     }
 
@@ -120,7 +149,7 @@ public function create() {
 
     $request->validate([
 
-        'name'             => 'required|min:4|unique:floors,name',
+        'name'             => 'required|min:3|unique:floors,name',
         'floor_number'       => 'required|unique:floors,floor_number',
            
 
@@ -138,7 +167,7 @@ public function create() {
  public function storemanager(Request $request){
 
     $request->validate([
-        'name'             => 'required|min:4|unique:floors,name',
+        'name'             => 'required|min:3|unique:floors,name',
         'floor_number'       => 'required|unique:floors,floor_number',
            
         
@@ -167,8 +196,9 @@ public function create() {
 
     
     public function editmanager(Floor $floor){
+        $managers = Manager::all();
         $floors = Floor::all();
-        return view('managers.floors.edit',['floor'=>$floor]);
+        return view('managers.floors.edit', compact('floor', 'managers'));
     }
 
    
@@ -180,7 +210,7 @@ public function create() {
 
     $request->validate([
 
-        'name'               => 'required|min:4|unique:floors,name,' .$floor->id,
+        'name'               => 'required|min:3|unique:floors,name,' .$floor->id,
         'floor_number'       => 'required|unique:floors,floor_number,'.$floor->id,
            
 
@@ -199,7 +229,7 @@ public function create() {
 
     $request->validate([
          
-        'name'               => 'required|min:4|unique:floors,name,' .$floor->id,
+        'name'               => 'required|min:3|unique:floors,name,' .$floor->id,
         'floor_number'       => 'required|unique:floors,floor_number,'.$floor->id,
   
     ]);
@@ -251,13 +281,13 @@ public function create() {
      foreach($rooms as $room){
          if($room->floor_number == $floor->floor_number){
              if($room->is_reserved == 1){
-                return redirect()->route('managerfloors.indexmanager')->with('reserved', 'Floor has reserved rooms'); 
+                return redirect()->route('managerownfloors.indexmanagerownfloors')->with('reserved', 'Floor has reserved rooms'); 
     
              }
           else{     
                 $room->delete();
                 $floor->delete();
-                return redirect()->route('managerfloors.indexmanager')->with('success','Floor deleted successfully');
+                return redirect()->route('managerownfloors.indexmanagerownfloors')->with('success','Floor deleted successfully');
 
          
         }

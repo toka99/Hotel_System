@@ -17,6 +17,7 @@ class Room extends Model
         'capacity',
         'price',
         'floor_number',
+        'manager_name',
         
     ];
  
@@ -41,6 +42,12 @@ class Room extends Model
    {
        return $this->belongsTo(Floor::class);
    }
+   
+   public function manager() //foreign key 
+   {
+       return $this->belongsTo(Manager::class);
+   }
+
 
 
 }

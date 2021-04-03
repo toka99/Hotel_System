@@ -233,14 +233,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </li>
 
 
-          <li class="nav-item">
-            <a href="/managerfloors" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-              Manage Floors
+               Manage Floor
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-          </li>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/managerfloors" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View All Floors</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/managerownfloors" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage My Own Floors</p>
+                </a>
+              </li>
+
 
           <li class="nav-item">
             <a href="/managerrooms" class="nav-link">
@@ -270,12 +284,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h1 class="m-0">Manage Floors</h1>
             <br>
 
-            
-            <a href="{{route('managerfloors.createmanager')}}"  type="button" class="btn btn-primary btn-sm">
-              
-                Create Floor
-            </a>
-           </form>
               
           </div><!-- /.col -->
           <div class="col-sm-6">
@@ -329,7 +337,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <th>Id</th>
                 <th>Number</th>                
                 <th>Name</th>
-                <th>Actions</th>
+              
                 
             </tr>
         </thead>
@@ -363,15 +371,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             {data: 'id', name: 'id'},
             {data: 'floor_number', name: 'floor_number'},
             {data: 'name', name: 'name'},
-           
-
-                    
-            {
-                data: 'action', 
-                name: 'action', 
-                orderable: true, 
-                searchable: true
-            },
+    
         ]
     });
     

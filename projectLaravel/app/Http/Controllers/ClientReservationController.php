@@ -71,10 +71,6 @@ class ClientReservationController extends Controller
                // 'capacity'  => 'required|lt:'. $room ["capacity"],
              ]);
 
-            //  $room = Room::find($room) ;
-            //  $room->is_reserved = 1; //Approved
-            //  $room->save();
-             
 
             $requestData = $request->all();
             Reservation::create($requestData);
