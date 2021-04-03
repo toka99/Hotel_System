@@ -266,7 +266,7 @@ class ReceptionistController extends Controller
 
     $receptionist->update($request->all());
 
-    return redirect()->route('managerreceptionists.indexmanager') ->with('success','Receptionist updated successfully');
+    return redirect()->route('managerownreceptionists.indexmanagerownreceptionist') ->with('success','Receptionist updated successfully');
     
  }
 

@@ -38,6 +38,47 @@ class ReservationController extends Controller
 
     }
 
+
+    
+    public function getReservationsManager(Request $request)
+
+    {
+
+        
+
+        if ($request->ajax()) {
+
+            $data = Reservation::latest()->get();
+
+            return Datatables::of($data)
+
+                
+                ->make(true);
+
+        }
+
+    }
+
+
+    public function getReservationsReceptionist(Request $request)
+
+    {
+
+        
+
+        if ($request->ajax()) {
+
+            $data = Reservation::latest()->get();
+
+            return Datatables::of($data)
+
+                
+                ->make(true);
+
+        }
+
+    }
+
     
 
     public function index() {

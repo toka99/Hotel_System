@@ -136,12 +136,12 @@ class RoomController extends Controller
 
     
  public function createmanager() {
-    return view('managers.rooms.create',[
-        'floors' => Floor::all()
-    ]);
+ 
+    $managers = Manager::all();
+    $floors = Floor::all();
+    return view('managers.rooms.create', compact('floors', 'managers'));
 
     }
-
 
 
  
@@ -187,16 +187,7 @@ class RoomController extends Controller
 
  }
 
- 
 
-
- //'users'=>User::all()  related to edit fun. d bta3t l drop down list bta3t l post creator mmkn n3mlha ll mangers w gwa l []
-//  public function edit($room){
-
-//     $room = Room::find($room) ;
-//     return view('admins.rooms.edit',['room'=>$room, 'floors'=>Floor::all()]);
- 
-    // }
 
     public function edit(Room $room){
         $floors = Floor::all();
@@ -250,7 +241,7 @@ class RoomController extends Controller
 
     $room->update($request->all());
 
-    return redirect()->route('managerrooms.indexmanager') ->with('success','Room updated successfully');
+    return redirect()->route('managerownrooms.indexmanagerownrooms') ->with('success','Room updated successfully');
     
  }
 

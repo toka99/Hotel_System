@@ -162,10 +162,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="/managers" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Hotel System</span>
     </a>
 
@@ -174,22 +174,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="/managers" class="d-block">Manager Main Menu</a>
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
-    
+      <!-- SidebarSearch Form -->    
+  
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+               <li class="nav-item menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -209,8 +209,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <i class="far fa-circle nav-icon"></i>
                   <p>Approved Clients</p>
                 </a>
-              </li>
-
+              </li>  
               <li class="nav-item">
                 <a href="/managerreservationclients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -219,34 +218,82 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="/managerreceptionists" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+
+
+
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-              Manage Receptionists
+                Manage Receptionist
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/managerreceptionists" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View All Receptionists</p>
+                </a>
+              </li>
+             
+              <li class="nav-item">
+                <a href="/managerownreceptionists" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage My Receptionists</p>
+                </a>
+              </li>
+            </ul>
           </li>
-
-
-
-          <li class="nav-item">
-            <a href="/managerfloors" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-              Manage Floors
+              Manage Floor
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/managerfloors" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View All Floors</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/managerownfloors" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage My Own Floors</p>
+                </a>
+              </li>
+            </ul>
           </li>
-
-          <li class="nav-item">
-            <a href="/managerrooms" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
               Manage Rooms
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/managerrooms" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View All Rooms</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/managerownrooms" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Manage My Own Rooms</p>
+                </a>
+              </li>
+            </ul>
           </li>
+          
+
+
 
 
 

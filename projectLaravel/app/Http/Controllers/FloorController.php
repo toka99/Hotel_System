@@ -237,7 +237,7 @@ public function create() {
 
     $floor->update($request->all());
 
-    return redirect()->route('managerfloors.indexmanager') ->with('success','Floor updated successfully');
+    return redirect()->route('managerownfloors.indexmanagerownfloors') ->with('success','Floor updated successfully');
     
  }
 
