@@ -34,6 +34,32 @@ Route::get('/reservation',function(){
     return view ("clients.Reservation");
     });
 
+    Route::get('/editProfile',function(){
+        return view ("clients.editProfile");
+        });
+//client crud on reservation 
+//client show available room 
+Route::get('/clientreservations', [ClientReservationController::class, 'index'])->name('clientreservation.index');//->middleware('auth');        
+Route::get('/clientreservations', [ReservationController::class, 'reservindex'])->name('clientreservation.index');
+//Route::get('/clientreservations/create', [ClientReservationController::class, 'create'])->name('clientreservation.create');//->middleware('auth');  
+Route::post('/clientreservations', [ClientReservationController::class, 'store'])->name('clientreservation.store');//->middleware('auth');
+
+// Route::put('/clientreservations/{reservation}', [ClientReservationController::class, 'update'])->name('clientreservation.update');//->middleware('auth'); e::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update')->middleware('auth'); 
+ Route::delete('/clientreservations/{reservation}', [ClientReservationController::class, 'destroy'])->name('clientreservation.destroy');//->middleware('auth');                              
+ Route::get('clients/list', [ReservationController::class, 'getClientReservations'])->name('clientreservation.list'); //Data table
+//Route::get('clientrooms/list', [ClientReservationController::class, 'getClientAvailableRooms'])->name('clientrooms.list'); //Data table
+Route::get('/clientreservations/{room}/edit', [ClientReservationController::class, 'edit'])->name('clientreservation.edit');//->middleware('auth'); 
+Route::get('clientrooms/list', [RoomController::class, 'getAvailableRooms'])->name('clientrooms.list'); //Data table
+
+
+
+
+
+
+
+
+
+
     
 Auth::routes();
 

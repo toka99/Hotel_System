@@ -38,6 +38,7 @@ class ReservationController extends Controller
 
     }
 
+<<<<<<< HEAD
 
     
     public function getReservationsManager(Request $request)
@@ -45,6 +46,13 @@ class ReservationController extends Controller
     {
 
         
+=======
+    public function getClientReservations(Request $request)
+
+    {
+
+        //dd($request);
+>>>>>>> 193d6c94528b09c18ab8898ddb44a2ca6b8cb78c
 
         if ($request->ajax()) {
 
@@ -53,6 +61,7 @@ class ReservationController extends Controller
             return Datatables::of($data)
 
                 
+<<<<<<< HEAD
                 ->make(true);
 
         }
@@ -79,6 +88,29 @@ class ReservationController extends Controller
 
     }
 
+=======
+            ->addColumn('action', 'helper.actionButtonsClientRservations')
+
+                
+            ->rawColumns(['action'])
+
+            ->make(true);
+
+        }
+
+    }
+
+
+
+
+    public function reservindex() {
+    
+        $allreservations = Reservation::all(); //object of elequont collection
+        return view('clients.Reservation' , [
+            'reservations' =>  $allreservations
+         ] );
+    }
+>>>>>>> 193d6c94528b09c18ab8898ddb44a2ca6b8cb78c
     
 
     public function index() {

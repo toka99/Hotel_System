@@ -88,7 +88,29 @@ class RoomController extends Controller
     }
 
 
+    public function getAvailableRooms(Request $request)
 
+    {
+
+        //dd($request);
+
+        if ($request->ajax()) {
+
+            $data = Room::latest()->where('is_reserved',0);
+
+            return Datatables::of($data)
+
+                ->addColumn('action', 'helper.actionButtonsClientRooms')
+
+                
+                ->rawColumns(['action'])
+
+                ->make(true);
+
+        }
+        
+
+    }
 
     public function index() {
     
